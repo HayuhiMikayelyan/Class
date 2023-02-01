@@ -9,4 +9,5 @@
     <!--    Secondary     -->
     <color name="secondary_red">#b5341b</color>
     <!--    Other   -->
+    <color name="text_color">#475d89</color>
 </resources>

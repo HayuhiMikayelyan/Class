@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">Class</string>
+    <string name="teacher">Teacher</string>
+    <string name="student">Student</string>
+    <string name="next">Next</string>
+    <string name="choose_text">Who are you?</string>
+    <string name="start">Let\'s start</string>
+    <string name="on_boarding_title_1">Teachers &amp; Students</string>
+    <string name="on_boarding_title_2">Exams</string>
+    <string name="on_boarding_title_3">Tests</string>
+    <string name="on_boarding_description_1">A good platform for teachers and students communication and education.</string>
+    <string name="on_boarding_description_2">Get ready for your exams and tests.</string>
+    <string name="on_boarding_description_3">Ready tests and questions.</string>
+    <string name="hi">Hello.</string>
+    <string name="sign_in_or_register">Sign in or register to start!</string>
+    <string name="register">Register</string>
+    <string name="sign_in">Sign in</string>
+    <string name="wrong_email">Wrong email</string>
+    <string name="wrong_password">Password must contain at least 6 characters</string>
+    <string name="different_password">Enter the same password</string>
+    <string name="registration">Registration</string>
+    <string name="wait">Please wait....</string>
+    <string name="successful">Registration completed successfully</string>
+    <string name="failure">Something went wrong try again.</string>
+    <string name="wrong_email_password">Wrong email or password</string>
 </resources>
