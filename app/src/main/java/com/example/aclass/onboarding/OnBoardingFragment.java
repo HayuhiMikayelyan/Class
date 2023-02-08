@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
@@ -21,7 +22,6 @@ import java.util.List;
 
 
 public class OnBoardingFragment extends Fragment {
-
     private OnBoardingAdapter onBoardingAdapter;
     private FragmentOnBoardingBinding binding;
 
@@ -46,6 +46,8 @@ public class OnBoardingFragment extends Fragment {
         binding.btnNext.setOnClickListener(view -> {
             if (binding.onBoardingViewPager.getCurrentItem() < onBoardingAdapter.getItemCount() - 1) {
                 binding.onBoardingViewPager.setCurrentItem(binding.onBoardingViewPager.getCurrentItem() + 1);
+            } else {
+                Navigation.findNavController(view).navigate(R.id.action_onBoardingFragment_to_signInOrRegisterFragment);
             }
         });
 

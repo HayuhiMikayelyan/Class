@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".auth.SignInOrRegisterFragment">
+
+    <View
+        android:id="@+id/view_welcome"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/welcome_card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.45"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_hi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="84dp"
+        android:fontFamily="@font/reef"
+        android:text="@string/hi"
+        android:textColor="@color/white"
+        android:textSize="48sp"
+        app:layout_constraintStart_toEndOf="@id/img_book"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/reef"
+        android:text="@string/sign_in_or_register"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        app:layout_constraintStart_toStartOf="@id/img_book"
+        app:layout_constraintTop_toBottomOf="@id/tv_hi" />
+
+    <Button
+        android:id="@+id/btn_sign_in"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/primary_blue_light"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:text="@string/sign_in"
+        android:textAllCaps="false"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_welcome" />
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:text="@string/register"
+        android:textAllCaps="false"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="@id/btn_sign_in"
+        app:layout_constraintStart_toStartOf="@id/btn_sign_in"
+        app:layout_constraintTop_toBottomOf="@id/btn_sign_in" />
+
+    <ImageView
+        android:id="@+id/img_book"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="16dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_book"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_hi"
+        app:layout_constraintStart_toStartOf="@+id/view_welcome" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

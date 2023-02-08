@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -48,4 +49,8 @@ dependencies {
     //Navigation
     implementation 'androidx.navigation:navigation-fragment:2.5.3'
     implementation 'androidx.navigation:navigation-ui:2.5.3'
+
+    //Firebase
+    implementation 'com.google.firebase:firebase-auth:21.1.0'
+
 }
