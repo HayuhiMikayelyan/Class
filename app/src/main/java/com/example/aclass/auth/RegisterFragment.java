@@ -15,8 +15,13 @@ import android.widget.Toast;
 import com.example.aclass.R;
 import com.example.aclass.databinding.FragmentRegisterBinding;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 
@@ -24,6 +29,7 @@ public class RegisterFragment extends Fragment {
     private FragmentRegisterBinding binding;
     private ProgressDialog progressDialog;
     private FirebaseAuth auth;
+    private FirebaseFirestore store;
 
 
 
@@ -34,6 +40,7 @@ public class RegisterFragment extends Fragment {
 
         progressDialog = new ProgressDialog(requireContext());
         auth = FirebaseAuth.getInstance();
+        store = FirebaseFirestore.getInstance();
         binding.btnRegister.setOnClickListener(this::PerformAuth);
 
         return binding.getRoot();
@@ -44,6 +51,11 @@ public class RegisterFragment extends Fragment {
         String email = Objects.requireNonNull(binding.edtEmail.getEditText()).getText().toString();
         String password = Objects.requireNonNull(binding.edtPassword.getEditText()).getText().toString();
         String repeat_password = Objects.requireNonNull(binding.edtRepeatPassword.getEditText()).getText().toString();
+        boolean isTeacher = false;
+        if (getArguments() != null) {
+            isTeacher = RegisterFragmentArgs.fromBundle(getArguments()).getIsTeacher();
+        }
+
 
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
@@ -68,10 +80,19 @@ public class RegisterFragment extends Fragment {
             progressDialog.setCanceledOnTouchOutside(false);
             progressDialog.show();
 
+            boolean finalIsTeacher = isTeacher;
             auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
                 progressDialog.dismiss();
                 if (task.isSuccessful()) {
-                    Toast.makeText(requireContext(), R.string.successful, Toast.LENGTH_LONG).show();
+                    DocumentReference documentReference = store.collection("users").document(Objects.requireNonNull(auth.getCurrentUser()).getUid());
+
+                    Map<String, Object> user = new HashMap<>();
+                    user.put("name",name);
+                    user.put("email",email);
+                    user.put("isTeacher", finalIsTeacher);
+
+                    documentReference.set(user).addOnSuccessListener(unused -> Toast.makeText(requireContext(), R.string.successful, Toast.LENGTH_LONG).show());
+
                     auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(task1 -> {
                         if (task.isSuccessful()){
                             Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_createClassFragment);

@@ -25,6 +25,8 @@ public class SignInFragment extends Fragment {
     private ProgressDialog progressDialog;
     private FirebaseAuth auth;
 
+
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

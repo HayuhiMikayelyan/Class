@@ -1,5 +1,7 @@
 package com.example.aclass.onboarding;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +18,7 @@ import android.widget.LinearLayout;
 
 import com.example.aclass.R;
 import com.example.aclass.databinding.FragmentOnBoardingBinding;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,13 +27,22 @@ import java.util.List;
 public class OnBoardingFragment extends Fragment {
     private OnBoardingAdapter onBoardingAdapter;
     private FragmentOnBoardingBinding binding;
-
+    private SharedPreferences sharedPreferences;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentOnBoardingBinding.inflate(inflater, container, false);
 
+        sharedPreferences = requireContext().getSharedPreferences("onBoarding", Context.MODE_PRIVATE);
+        boolean isFirstTime = sharedPreferences.getBoolean("FirstTime", true);
+        if (!isFirstTime) {
+            if (FirebaseAuth.getInstance().getCurrentUser()==null){
+                Navigation.findNavController(container).navigate(R.id.action_onBoardingFragment_to_signInOrRegisterFragment);
+            } else {
+                Navigation.findNavController(container).navigate(R.id.action_onBoardingFragment_to_homeFragment);
+            }
+        }
         setupOnBoardingItems();
         binding.onBoardingViewPager.setAdapter(onBoardingAdapter);
         setupOnBoardingIndicators();
@@ -47,6 +59,9 @@ public class OnBoardingFragment extends Fragment {
             if (binding.onBoardingViewPager.getCurrentItem() < onBoardingAdapter.getItemCount() - 1) {
                 binding.onBoardingViewPager.setCurrentItem(binding.onBoardingViewPager.getCurrentItem() + 1);
             } else {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("FirstTime", false);
+                editor.apply();
                 Navigation.findNavController(view).navigate(R.id.action_onBoardingFragment_to_signInOrRegisterFragment);
             }
         });

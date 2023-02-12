@@ -1,6 +1,7 @@
 package com.example.aclass.auth;
 
 import android.content.res.ColorStateList;
+import android.graphics.Path;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,7 +16,7 @@ import android.view.ViewGroup;
 import com.example.aclass.R;
 import com.example.aclass.databinding.FragmentChooseBinding;
 
-public class ChooseFragment extends Fragment{
+public class ChooseFragment extends Fragment {
 
     private FragmentChooseBinding binding;
     private boolean isSelected = false;
@@ -27,7 +28,7 @@ public class ChooseFragment extends Fragment{
         binding = FragmentChooseBinding.inflate(inflater, container, false);
 
         ColorStateList selected = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.primary_blue_dark));
-        ColorStateList unselected = ColorStateList.valueOf(ContextCompat.getColor(requireContext(),R.color.primary_blue_light));
+        ColorStateList unselected = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.primary_blue_light));
         binding.viewTeacher.setOnClickListener(view -> {
             isTeacher = true;
             isSelected = true;
@@ -43,8 +44,10 @@ public class ChooseFragment extends Fragment{
         });
 
         binding.btnNext.setOnClickListener(view -> {
-            if (isSelected){
-                Navigation.findNavController(view).navigate(R.id.action_chooseFragment_to_registerFragment);
+            if (isSelected) {
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("isTeacher",isTeacher);
+                Navigation.findNavController(view).navigate(R.id.action_chooseFragment_to_registerFragment,bundle);
             }
         });
 
