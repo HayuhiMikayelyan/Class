@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateClassFragment"
+    android:background="@drawable/background4">
+
+    <ImageView
+        android:id="@+id/img_add_class"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/ic_teacher_add_class"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_pencil"
+        android:layout_width="300dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.05"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/ic_pencil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_create_class"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/reef"
+        android:text="@string/create_a_new_class"
+        android:textColor="@color/primary_blue_light"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_pencil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/img_pencil" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edt_class_name"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/class_name"
+        app:startIconDrawable="@drawable/ic_class"
+        app:startIconTint="@color/primary_blue_dark"
+        android:layout_marginTop="24dp"
+        android:layout_marginHorizontal="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_create_class"
+        app:boxStrokeColor="@color/primary_blue_dark"
+        app:hintTextColor="@color/primary_blue_dark"
+        app:errorEnabled="true"
+        app:counterEnabled="true"
+        app:counterMaxLength="36">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLength="25"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/spin_subject"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/subject"
+        android:layout_marginHorizontal="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edt_class_name"
+        app:boxStrokeColor="@color/primary_blue_dark"
+        app:hintTextColor="@color/primary_blue_dark">
+
+        <AutoCompleteTextView
+            android:id="@+id/filled_exposed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,4 +28,19 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="repeat_password">Repeat password</string>
+    <string name="class_name">Class name</string>
+    <string name="create_a_new_class">Create a new class</string>
+    <string name="subject">Subject</string>
+
+    <string-array name="spinner_items">
+        <item>Math</item>
+        <item>History</item>
+        <item>Biology</item>
+        <item>Geography</item>
+        <item>Chemistry</item>
+        <item>Physics</item>
+        <item>Foreign languages</item>
+        <item>Literature</item>
+        <item>Another</item>
+    </string-array>
 </resources>

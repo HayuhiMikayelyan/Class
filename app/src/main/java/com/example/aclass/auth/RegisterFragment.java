@@ -72,7 +72,11 @@ public class RegisterFragment extends Fragment {
                 progressDialog.dismiss();
                 if (task.isSuccessful()) {
                     Toast.makeText(requireContext(), R.string.successful, Toast.LENGTH_LONG).show();
-                    Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_signInFragment);
+                    auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(task1 -> {
+                        if (task.isSuccessful()){
+                            Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_createClassFragment);
+                        }
+                    });
                 } else {
                     Toast.makeText(requireContext(), R.string.failure, Toast.LENGTH_LONG).show();
                 }
