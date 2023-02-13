@@ -36,6 +36,7 @@
     <string name="ask_code">Ask your teacher for the code.</string>
     <string name="join">Join to the class</string>
     <string name="create_the_class">Create the class</string>
+    <string name="fill_all">Fill all fields</string>
 
     <string-array name="spinner_items">
         <item>Math</item>
