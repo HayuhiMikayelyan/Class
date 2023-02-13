@@ -55,6 +55,9 @@
             android:name="isTeacher"
             android:defaultValue="false"
             app:argType="boolean" />
+        <action
+            android:id="@+id/action_registerFragment_to_joinToClassFragment"
+            app:destination="@id/joinToClassFragment" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
@@ -67,12 +70,25 @@
     </fragment>
     <fragment
         android:id="@+id/createClassFragment"
-        android:name="com.example.aclass.CreateClassFragment"
+        android:name="com.example.aclass.teacher.CreateClassFragment"
         android:label="fragment_create_class"
-        tools:layout="@layout/fragment_create_class" />
+        tools:layout="@layout/fragment_create_class" >
+        <action
+            android:id="@+id/action_createClassFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.aclass.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/joinToClassFragment"
+        android:name="com.example.aclass.student.JoinToClassFragment"
+        android:label="fragment_join_to_class"
+        tools:layout="@layout/fragment_join_to_class" >
+        <action
+            android:id="@+id/action_joinToClassFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

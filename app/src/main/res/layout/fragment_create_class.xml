@@ -4,29 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateClassFragment"
-    android:background="@drawable/background4">
+    android:background="@drawable/background5"
+    tools:context=".teacher.CreateClassFragment">
 
     <ImageView
         android:id="@+id/img_add_class"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:contentDescription="@string/app_name"
         android:src="@drawable/ic_teacher_add_class"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="ImageContrastCheck" />
 
     <ImageView
         android:id="@+id/img_pencil"
         android:layout_width="300dp"
         android:layout_height="0dp"
-        app:layout_constraintHeight_percent="0.05"
         android:layout_marginTop="32dp"
+        android:contentDescription="@string/app_name"
         android:src="@drawable/ic_pencil"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.05"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck" />
 
     <TextView
         android:id="@+id/tv_create_class"
@@ -34,7 +38,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/reef"
         android:text="@string/create_a_new_class"
-        android:textColor="@color/primary_blue_light"
+        android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/img_pencil"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,25 +51,26 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/class_name"
-        app:startIconDrawable="@drawable/ic_class"
-        app:startIconTint="@color/primary_blue_dark"
-        android:layout_marginTop="24dp"
         android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="24dp"
+        android:hint="@string/class_name"
+        app:boxStrokeColor="@color/primary_blue_dark"
+        app:counterEnabled="true"
+        app:counterMaxLength="36"
+        app:errorEnabled="true"
+        app:hintTextColor="@color/primary_blue_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_create_class"
-        app:boxStrokeColor="@color/primary_blue_dark"
-        app:hintTextColor="@color/primary_blue_dark"
-        app:errorEnabled="true"
-        app:counterEnabled="true"
-        app:counterMaxLength="36">
+        app:startIconDrawable="@drawable/ic_class"
+        app:startIconTint="@color/primary_blue_dark">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:maxLength="25"/>
+            android:maxLength="25"
+            android:textColorHint="#BBDEFB" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -73,19 +78,31 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/subject"
         android:layout_marginHorizontal="24dp"
+        android:hint="@string/subject"
+        app:boxStrokeColor="@color/primary_blue_dark"
+        app:hintTextColor="@color/primary_blue_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edt_class_name"
-        app:boxStrokeColor="@color/primary_blue_dark"
-        app:hintTextColor="@color/primary_blue_dark">
+        app:layout_constraintTop_toBottomOf="@id/edt_class_name">
 
         <AutoCompleteTextView
             android:id="@+id/filled_exposed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="none"/>
+            android:inputType="none"
+            tools:ignore="LabelFor" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_create_class"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/create_the_class"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spin_subject" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

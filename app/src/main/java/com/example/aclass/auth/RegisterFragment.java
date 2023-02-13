@@ -15,7 +15,6 @@ import android.widget.Toast;
 import com.example.aclass.R;
 import com.example.aclass.databinding.FragmentRegisterBinding;
 
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -57,7 +56,7 @@ public class RegisterFragment extends Fragment {
         }
 
 
-        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        String emailPattern = "[a-zA-Z\\d._-]+@[a-z]+\\.+[a-z]+";
 
         if (name.isEmpty()){
             binding.edtName.setError(getString(R.string.wrong_name));
@@ -95,7 +94,11 @@ public class RegisterFragment extends Fragment {
 
                     auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(task1 -> {
                         if (task.isSuccessful()){
-                            Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_createClassFragment);
+                            if (finalIsTeacher){
+                                Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_createClassFragment);
+                            } else {
+                                Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_joinToClassFragment);
+                            }
                         }
                     });
                 } else {

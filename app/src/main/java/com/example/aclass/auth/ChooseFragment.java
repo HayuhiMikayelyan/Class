@@ -1,7 +1,6 @@
 package com.example.aclass.auth;
 
 import android.content.res.ColorStateList;
-import android.graphics.Path;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -29,6 +28,7 @@ public class ChooseFragment extends Fragment {
 
         ColorStateList selected = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.primary_blue_dark));
         ColorStateList unselected = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.primary_blue_light));
+
         binding.viewTeacher.setOnClickListener(view -> {
             isTeacher = true;
             isSelected = true;

@@ -18,10 +18,12 @@ import android.widget.LinearLayout;
 
 import com.example.aclass.R;
 import com.example.aclass.databinding.FragmentOnBoardingBinding;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class OnBoardingFragment extends Fragment {
@@ -33,6 +35,7 @@ public class OnBoardingFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentOnBoardingBinding.inflate(inflater, container, false);
+        FirebaseApp.initializeApp(requireContext());
 
         sharedPreferences = requireContext().getSharedPreferences("onBoarding", Context.MODE_PRIVATE);
         boolean isFirstTime = sharedPreferences.getBoolean("FirstTime", true);

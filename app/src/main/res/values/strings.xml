@@ -31,6 +31,11 @@
     <string name="class_name">Class name</string>
     <string name="create_a_new_class">Create a new class</string>
     <string name="subject">Subject</string>
+    <string name="join_to_your_class">Join to your class!</string>
+    <string name="code">Code</string>
+    <string name="ask_code">Ask your teacher for the code.</string>
+    <string name="join">Join to the class</string>
+    <string name="create_the_class">Create the class</string>
 
     <string-array name="spinner_items">
         <item>Math</item>

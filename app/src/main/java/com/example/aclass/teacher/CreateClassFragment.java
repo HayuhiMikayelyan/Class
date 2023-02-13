@@ -1,4 +1,4 @@
-package com.example.aclass;
+package com.example.aclass.teacher;
 
 import android.os.Bundle;
 
@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
+import com.example.aclass.R;
 import com.example.aclass.databinding.FragmentCreateClassBinding;
 
 public class CreateClassFragment extends Fragment {

@@ -44,7 +44,7 @@ public class SignInFragment extends Fragment {
         String email = Objects.requireNonNull(binding.edtEmail.getEditText()).getText().toString();
         String password = Objects.requireNonNull(binding.edtPassword.getEditText()).getText().toString();
 
-        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        String emailPattern = "[a-zA-Z\\d._-]+@[a-z]+\\.+[a-z]+";
 
         if (!email.matches(emailPattern)) {
             binding.edtEmail.setError(getString(R.string.wrong_email));
