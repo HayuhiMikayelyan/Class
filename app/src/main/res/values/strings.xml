@@ -37,7 +37,9 @@
     <string name="join">Join to the class</string>
     <string name="create_the_class">Create the class</string>
     <string name="fill_all">Fill all fields</string>
-
+    <string name="classes">Classes</string>
+    <string name="tests">Tests</string>
+    <string name="profile">Profile</string>
     <string-array name="spinner_items">
         <item>Math</item>
         <item>History</item>
@@ -49,4 +51,5 @@
         <item>Literature</item>
         <item>Another</item>
     </string-array>
+
 </resources>
