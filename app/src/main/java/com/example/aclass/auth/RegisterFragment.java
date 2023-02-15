@@ -37,7 +37,6 @@ public class RegisterFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentRegisterBinding.inflate(inflater, container, false);
 
-        progressDialog = new ProgressDialog(requireContext());
         auth = FirebaseAuth.getInstance();
         store = FirebaseFirestore.getInstance();
         binding.btnRegister.setOnClickListener(this::PerformAuth);
@@ -50,11 +49,11 @@ public class RegisterFragment extends Fragment {
         String email = Objects.requireNonNull(binding.edtEmail.getEditText()).getText().toString();
         String password = Objects.requireNonNull(binding.edtPassword.getEditText()).getText().toString();
         String repeat_password = Objects.requireNonNull(binding.edtRepeatPassword.getEditText()).getText().toString();
+
         boolean isTeacher = false;
         if (getArguments() != null) {
             isTeacher = RegisterFragmentArgs.fromBundle(getArguments()).getIsTeacher();
         }
-
 
         String emailPattern = "[a-zA-Z\\d._-]+@[a-z]+\\.+[a-z]+";
 
@@ -74,14 +73,11 @@ public class RegisterFragment extends Fragment {
             binding.edtEmail.setError(null);
             binding.edtPassword.setError(null);
             binding.edtRepeatPassword.setError(null);
-            progressDialog.setMessage(getString(R.string.wait));
-            progressDialog.setTitle(getString(R.string.registration));
-            progressDialog.setCanceledOnTouchOutside(false);
-            progressDialog.show();
+            showProgress();
 
             boolean finalIsTeacher = isTeacher;
             auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
-                progressDialog.dismiss();
+                dismissProgress();
                 if (task.isSuccessful()) {
                     DocumentReference documentReference = store.collection("users").document(Objects.requireNonNull(auth.getCurrentUser()).getUid());
 
@@ -108,5 +104,16 @@ public class RegisterFragment extends Fragment {
         }
     }
 
+    private void showProgress(){
+        progressDialog = new ProgressDialog(requireContext());
+        progressDialog.setMessage(getString(R.string.wait));
+        progressDialog.setTitle(getString(R.string.registration));
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
+    }
+
+    private void dismissProgress(){
+        progressDialog.dismiss();
+    }
 
 }

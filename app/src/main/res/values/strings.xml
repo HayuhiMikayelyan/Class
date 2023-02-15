@@ -40,6 +40,7 @@
     <string name="classes">Classes</string>
     <string name="tests">Tests</string>
     <string name="profile">Profile</string>
+    <string name="wrong_code">The code is wrong</string>
     <string-array name="spinner_items">
         <item>Math</item>
         <item>History</item>

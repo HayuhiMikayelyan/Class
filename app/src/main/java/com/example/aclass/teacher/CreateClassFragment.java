@@ -44,7 +44,7 @@ public class CreateClassFragment extends Fragment {
         binding.filledExposed.setOnItemClickListener((adapterView, view, i, l) -> subject = adapterView.getItemAtPosition(i).toString());
 
         binding.btnCreateClass.setOnClickListener(view -> {
-            String id = UUID.randomUUID().toString();
+            String id = UUID.randomUUID().toString().replace("-","").substring(0,8);
             String className = Objects.requireNonNull(binding.edtClassName.getEditText()).getText().toString();
             if (!className.equals("") && !subject.equals("")){
 
@@ -67,7 +67,6 @@ public class CreateClassFragment extends Fragment {
 
                     }
                 });
-
 
             } else {
                 Toast.makeText(requireContext(), R.string.fill_all, Toast.LENGTH_SHORT).show();
