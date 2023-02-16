@@ -85,6 +85,7 @@ public class RegisterFragment extends Fragment {
                     user.put("name",name);
                     user.put("email",email);
                     user.put("isTeacher", finalIsTeacher);
+                    user.put("id", auth.getCurrentUser().getUid());
 
                     documentReference.set(user).addOnSuccessListener(unused -> Toast.makeText(requireContext(), R.string.successful, Toast.LENGTH_LONG).show());
 

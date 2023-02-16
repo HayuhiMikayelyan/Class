@@ -8,6 +8,9 @@
     <color name="primary_blue_dark">#0b2144</color>
     <!--    Secondary     -->
     <color name="secondary_red">#b5341b</color>
+
     <!--    Other   -->
     <color name="text_color">#475d89</color>
+    <color name="back_color">#B4BEF4</color>
+
 </resources>

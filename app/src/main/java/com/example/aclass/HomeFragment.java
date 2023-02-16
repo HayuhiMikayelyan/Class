@@ -7,15 +7,13 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.aclass.databinding.FragmentHomeBinding;
-import com.example.aclass.home.ClassesFragment;
+import com.example.aclass.home.classes.ClassesFragment;
 import com.example.aclass.home.ProfileFragment;
 import com.example.aclass.home.TestsFragment;
-import com.google.android.material.navigation.NavigationBarView;
 
 
 public class HomeFragment extends Fragment {

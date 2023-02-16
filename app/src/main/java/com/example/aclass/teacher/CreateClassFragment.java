@@ -55,7 +55,7 @@ public class CreateClassFragment extends Fragment {
 
                 Map<String, String> classes = new HashMap<>();
                 classes.put("id",id);
-                classes.put("class name",className);
+                classes.put("className",className);
                 classes.put("subject",subject);
 
                 documentReference.set(classes).addOnSuccessListener(unused -> {
