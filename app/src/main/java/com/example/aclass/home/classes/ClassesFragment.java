@@ -23,18 +23,16 @@ import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 public class ClassesFragment extends Fragment {
-
-    private FirebaseFirestore db;
-    private FirebaseAuth auth;
-    private List<String> classIds;
-    private List<Class> classes;
-    private ClassesAdapter adapter;
     private FragmentClassesBinding binding;
     private Boolean isTeacher = false;
+    private ClassesAdapter adapter;
+    private List<Class> classes;
+    private List<String> classIds;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -42,19 +40,14 @@ public class ClassesFragment extends Fragment {
 
         binding = FragmentClassesBinding.inflate(inflater, container, false);
 
-        db = FirebaseFirestore.getInstance();
-        auth = FirebaseAuth.getInstance();
-
+        classIds = Collections.singletonList("");
         classes = new ArrayList<>();
-        classIds = new ArrayList<>();
 
-        adapter = new ClassesAdapter(requireContext(), classes);
+        adapter = new ClassesAdapter(classes);
 
         binding.recycler.setHasFixedSize(true);
         binding.recycler.setLayoutManager(new LinearLayoutManager(requireContext()));
         binding.recycler.setAdapter(adapter);
-
-        eventChangeListener();
 
         binding.btnAddClass.setOnClickListener(v -> {
             if (!isTeacher) {
@@ -62,47 +55,52 @@ public class ClassesFragment extends Fragment {
             } else {
                 Navigation.findNavController(v).navigate(R.id.action_homeFragment_to_createClassFragment);
             }
-
         });
+
+        getClasses();
 
         return binding.getRoot();
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private void eventChangeListener() {
+    private void getClasses() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
         String id = Objects.requireNonNull(auth.getCurrentUser()).getUid();
 
         db.collection("users").addSnapshotListener((value, error) -> {
-            if (value != null) {
+            if (value!=null){
                 for (DocumentChange documentChange : value.getDocumentChanges()) {
                     User user = documentChange.getDocument().toObject(User.class);
                     if (user.getId().equals(id)) {
                         isTeacher = user.getIsTeacher();
                         classIds = user.getClasses();
                     }
-                }
-                if (Objects.equals(classIds.get(0), "")) {
-                    binding.tvNoClasses.setVisibility(View.VISIBLE);
-                    binding.imgNoClasses.setVisibility(View.VISIBLE);
-                } else {
-                    binding.tvNoClasses.setVisibility(View.GONE);
-                    binding.imgNoClasses.setVisibility(View.GONE);
-                    db.collection("classes").addSnapshotListener((value1, error1) -> {
-                        if (value1 != null) {
-                            for (DocumentChange documentChange : value1.getDocumentChanges()) {
-                                Class class1 = documentChange.getDocument().toObject(Class.class);
-                                for (String classId : classIds) {
-                                    if (class1.getId().equals(classId)) {
-                                        classes.add(class1);
+                    if (Objects.equals(classIds.get(0), "")) {
+                        binding.tvNoClasses.setVisibility(View.VISIBLE);
+                        binding.imgNoClasses.setVisibility(View.VISIBLE);
+                    } else {
+                        binding.tvNoClasses.setVisibility(View.GONE);
+                        binding.imgNoClasses.setVisibility(View.GONE);
+                        db.collection("classes").addSnapshotListener((value1, error1) -> {
+                            if (value1 != null) {
+                                for (DocumentChange documentChange1 : value1.getDocumentChanges()) {
+                                    Class class1 = documentChange1.getDocument().toObject(Class.class);
+                                    for (String classId : classIds) {
+                                        if (class1.getId().equals(classId)) {
+                                            classes.add(class1);
+                                        }
                                     }
                                 }
+                                adapter.notifyDataSetChanged();
+                            } else {
+                                Toast.makeText(requireContext(), getText(R.string.try_again), Toast.LENGTH_SHORT).show();
                             }
-                            adapter.notifyDataSetChanged();
-                        } else {
-                            Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                        });
+                    }
                 }
+            } else {
+                Toast.makeText(requireContext(), getText(R.string.try_again), Toast.LENGTH_SHORT).show();
             }
         });
 

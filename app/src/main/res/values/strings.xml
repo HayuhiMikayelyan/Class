@@ -44,6 +44,7 @@
     <string name="try_again">Try again!</string>
     <string name="no_classes">You don\'t have any classes yet!</string>
     <string name="join_later">Join later</string>
+    <string name="tests_count">tests</string>
     <string-array name="spinner_items">
         <item>Math</item>
         <item>History</item>

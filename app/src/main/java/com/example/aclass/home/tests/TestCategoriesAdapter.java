@@ -1,0 +1,60 @@
+package com.example.aclass.home.tests;
+
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.aclass.R;
+import com.example.aclass.databinding.ItemTestCategoriesBinding;
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
+
+
+public class TestCategoriesAdapter extends RecyclerView.Adapter<TestCategoriesAdapter.TestCategoriesViewHolder> {
+
+    private final List<Category> categories;
+    private final Context context;
+
+
+    static class TestCategoriesViewHolder extends RecyclerView.ViewHolder {
+
+        ItemTestCategoriesBinding binding;
+
+        public TestCategoriesViewHolder(ItemTestCategoriesBinding b) {
+            super(b.getRoot());
+            binding = b;
+        }
+    }
+
+    public TestCategoriesAdapter(List<Category> categories, Context context) {
+        this.categories = categories;
+        this.context = context;
+    }
+
+
+    @NonNull
+    @Override
+    public TestCategoriesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new TestCategoriesViewHolder(ItemTestCategoriesBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
+    }
+
+    @SuppressLint("SetTextI18n")
+    @Override
+    public void onBindViewHolder(@NonNull TestCategoriesViewHolder holder, int position) {
+        holder.binding.tvCategory.setText(categories.get(position).getName());
+        holder.binding.tvTestCount.setText(categories.get(position).getCount() +" "+context.getText(R.string.tests));
+        Picasso.with(context).load(categories.get(position).getIcon()).into(holder.binding.icCategory);
+    }
+
+    @Override
+    public int getItemCount() {
+        return categories.size();
+    }
+
+
+}

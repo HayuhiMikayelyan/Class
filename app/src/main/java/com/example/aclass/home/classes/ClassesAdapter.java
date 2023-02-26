@@ -24,11 +24,9 @@ public class ClassesAdapter extends RecyclerView.Adapter<ClassesAdapter.ClassesV
             binding = b;
         }
     }
-    public ClassesAdapter(Context context, List<Class> classes) {
+    public ClassesAdapter(List<Class> classes) {
         this.classes = classes;
     }
-
-
 
     @NonNull
     @Override

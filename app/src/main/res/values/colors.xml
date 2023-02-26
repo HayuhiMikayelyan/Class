@@ -12,5 +12,6 @@
     <!--    Other   -->
     <color name="text_color">#475d89</color>
     <color name="back_color">#B4BEF4</color>
+    <color name="secondary_text">#1F3F5E</color>
 
 </resources>
