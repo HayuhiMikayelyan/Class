@@ -16,6 +16,7 @@ import com.example.aclass.R;
 import com.example.aclass.databinding.FragmentCreateClassBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 import java.util.Collections;
@@ -61,9 +62,8 @@ public class CreateClassFragment extends Fragment {
                 documentReference.set(classes).addOnSuccessListener(unused -> {
                     if (auth.getCurrentUser()!=null){
                         DocumentReference documentReference1 = store.collection("users").document(auth.getCurrentUser().getUid());
-                        Map<String, List<String>> users = new HashMap<>();
-                        users.put("classes", Collections.singletonList(id));
-                        documentReference1.set(users, SetOptions.merge()).addOnSuccessListener(unused1 -> NavHostFragment.findNavController(CreateClassFragment.this).navigate(R.id.action_createClassFragment_to_homeFragment));
+                        documentReference1.update("classes", FieldValue.arrayUnion(id));
+                        NavHostFragment.findNavController(CreateClassFragment.this).navigate(R.id.action_createClassFragment_to_homeFragment);
 
                     }
                 });

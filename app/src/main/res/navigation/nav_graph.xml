@@ -79,9 +79,16 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.aclass.HomeFragment"
+        android:name="com.example.aclass.fragments.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_joinToClassFragment"
+            app:destination="@id/joinToClassFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_createClassFragment"
+            app:destination="@id/createClassFragment" />
+    </fragment>
     <fragment
         android:id="@+id/joinToClassFragment"
         android:name="com.example.aclass.student.JoinToClassFragment"

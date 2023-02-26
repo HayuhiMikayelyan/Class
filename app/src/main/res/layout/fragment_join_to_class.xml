@@ -72,5 +72,18 @@
         app:layout_constraintStart_toStartOf="@+id/edt_code"
         app:layout_constraintTop_toBottomOf="@+id/tv_ask" />
 
+    <Button
+        android:id="@+id/btn_later"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/join_later"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:backgroundTint="@color/primary_blue_light"
+        app:layout_constraintEnd_toEndOf="@+id/btn_join"
+        app:layout_constraintStart_toStartOf="@+id/btn_join"
+        app:layout_constraintTop_toBottomOf="@+id/btn_join" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

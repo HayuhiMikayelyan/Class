@@ -30,4 +30,43 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_my_classes"
         tools:listitem="@layout/item_classes" />
+
+    <ImageView
+        android:id="@id/img_no_classes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_no_classes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tv_no_classes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_classes"
+        android:fontFamily="@font/reef"
+        android:textSize="24sp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/primary_blue_dark"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/img_no_classes"
+        app:layout_constraintStart_toStartOf="@+id/img_no_classes"
+        app:layout_constraintTop_toBottomOf="@+id/img_no_classes"
+        android:visibility="gone"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_add_class"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="80dp"
+        android:clickable="true"
+        android:src="@drawable/ic_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

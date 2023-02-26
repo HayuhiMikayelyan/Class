@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
@@ -55,15 +56,23 @@ public class JoinToClassFragment extends Fragment {
                     binding.edtCode.getEditText().setText("");
                 } else {
                     DocumentReference documentReference1 = firestore.collection("users").document(Objects.requireNonNull(auth.getCurrentUser()).getUid());
-                    Map<String, List<String>> users = new HashMap<>();
-                    users.put("classes", Collections.singletonList(id));
-                    documentReference1.set(users, SetOptions.merge()).addOnCompleteListener(task2 -> {
-                        if (task2.isSuccessful()){
-                            NavHostFragment.findNavController(JoinToClassFragment.this).navigate(R.id.action_joinToClassFragment_to_homeFragment);
-                        } else {
-                            Toast.makeText(requireContext(), Objects.requireNonNull(task2.getException()).toString(), Toast.LENGTH_LONG).show();
-                        }
-                    });
+                    documentReference1.update("classes", FieldValue.arrayUnion(id));
+                    NavHostFragment.findNavController(JoinToClassFragment.this).navigate(R.id.action_joinToClassFragment_to_homeFragment);
+                }
+            });
+        });
+
+        binding.btnLater.setOnClickListener(v -> {
+            showProgress();
+            DocumentReference documentReference1 = firestore.collection("users").document(Objects.requireNonNull(auth.getCurrentUser()).getUid());
+            Map<String, List<String>> users = new HashMap<>();
+            users.put("classes", Collections.singletonList(""));
+            documentReference1.set(users, SetOptions.merge()).addOnCompleteListener(task2 -> {
+                dismissProgress();
+                if (task2.isSuccessful()){
+                    NavHostFragment.findNavController(JoinToClassFragment.this).navigate(R.id.action_joinToClassFragment_to_homeFragment);
+                } else {
+                    Toast.makeText(requireContext(), getString(R.string.try_again), Toast.LENGTH_LONG).show();
                 }
             });
         });

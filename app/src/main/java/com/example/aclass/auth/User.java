@@ -1,4 +1,4 @@
-package com.example.aclass.home;
+package com.example.aclass.auth;
 
 import java.util.List;
 
@@ -35,11 +35,11 @@ public class User {
         this.email = email;
     }
 
-    public Boolean getTeacher() {
+    public Boolean getIsTeacher() {
         return isTeacher;
     }
 
-    public void setTeacher(Boolean teacher) {
+    public void setIsTeacher(Boolean teacher) {
         isTeacher = teacher;
     }
 

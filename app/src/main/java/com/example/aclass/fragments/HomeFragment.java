@@ -1,4 +1,4 @@
-package com.example.aclass;
+package com.example.aclass.fragments;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -10,10 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.aclass.R;
 import com.example.aclass.databinding.FragmentHomeBinding;
 import com.example.aclass.home.classes.ClassesFragment;
-import com.example.aclass.home.ProfileFragment;
-import com.example.aclass.home.TestsFragment;
+import com.example.aclass.home.profile.ProfileFragment;
+import com.example.aclass.home.tests.TestsFragment;
 
 
 public class HomeFragment extends Fragment {

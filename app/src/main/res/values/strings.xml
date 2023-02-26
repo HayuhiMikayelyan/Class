@@ -41,6 +41,9 @@
     <string name="tests">Tests</string>
     <string name="profile">Profile</string>
     <string name="wrong_code">The code is wrong</string>
+    <string name="try_again">Try again!</string>
+    <string name="no_classes">You don\'t have any classes yet!</string>
+    <string name="join_later">Join later</string>
     <string-array name="spinner_items">
         <item>Math</item>
         <item>History</item>
