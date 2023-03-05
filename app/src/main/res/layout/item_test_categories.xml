@@ -30,9 +30,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginStart="2dp"
             android:fontFamily="@font/reef"
             android:textColor="@color/primary_blue_dark"
-            android:textSize="32sp"
+            android:textSize="28sp"
             app:layout_constraintStart_toStartOf="@id/ic_category"
             app:layout_constraintTop_toBottomOf="@id/ic_category"
             tools:text="History" />
@@ -44,7 +45,7 @@
             android:fontFamily="@font/reef"
             android:textColor="@color/secondary_text"
             android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@id/ic_category"
+            app:layout_constraintStart_toStartOf="@id/tv_category"
             app:layout_constraintTop_toBottomOf="@id/tv_category"
             tools:text="5 tests"/>
     </androidx.constraintlayout.widget.ConstraintLayout>

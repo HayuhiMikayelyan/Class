@@ -88,6 +88,9 @@
         <action
             android:id="@+id/action_homeFragment_to_createClassFragment"
             app:destination="@id/createClassFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_testsFragment"
+            app:destination="@id/testsFragment" />
     </fragment>
     <fragment
         android:id="@+id/joinToClassFragment"
@@ -98,4 +101,9 @@
             android:id="@+id/action_joinToClassFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/testsFragment"
+        android:name="com.example.aclass.home.tests.TestsFragment"
+        android:label="fragment_tests"
+        tools:layout="@layout/fragment_tests" />
 </navigation>

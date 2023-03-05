@@ -1,4 +1,4 @@
-package com.example.aclass.home.tests;
+package com.example.aclass.home.tests.categories;
 
 public class Category {
     private String icon;

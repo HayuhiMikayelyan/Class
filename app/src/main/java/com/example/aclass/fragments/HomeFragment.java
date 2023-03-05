@@ -14,7 +14,7 @@ import com.example.aclass.R;
 import com.example.aclass.databinding.FragmentHomeBinding;
 import com.example.aclass.home.classes.ClassesFragment;
 import com.example.aclass.home.profile.ProfileFragment;
-import com.example.aclass.home.tests.TestsFragment;
+import com.example.aclass.home.tests.categories.TestCategoriesFragment;
 
 
 public class HomeFragment extends Fragment {
@@ -27,7 +27,7 @@ public class HomeFragment extends Fragment {
         FragmentHomeBinding binding = FragmentHomeBinding.inflate(inflater, container, false);
 
         ClassesFragment classesFragment = new ClassesFragment();
-        TestsFragment testsFragment = new TestsFragment();
+        TestCategoriesFragment testsFragment = new TestCategoriesFragment();
         ProfileFragment profileFragment = new ProfileFragment();
 
         loadFragment(classesFragment);

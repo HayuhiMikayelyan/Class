@@ -4,17 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.tests.TestsFragment"
-    android:background="@color/primary_blue">
-
+    android:background="@color/primary_blue"
+    tools:context=".home.tests.categories.TestCategoriesFragment">
 
     <TextView
-        android:id="@+id/tv_tests"
+        android:id="@+id/tv_categories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/reef"
-        android:text="@string/tests"
+        android:text="@string/categories"
         android:textColor="@color/primary_blue_dark"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,6 +27,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_tests"
+        app:layout_constraintTop_toBottomOf="@id/tv_categories"
         tools:listitem="@layout/item_test_categories" />
 </androidx.constraintlayout.widget.ConstraintLayout>

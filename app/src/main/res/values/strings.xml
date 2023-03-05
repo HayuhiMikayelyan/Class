@@ -56,5 +56,7 @@
         <item>Literature</item>
         <item>Another</item>
     </string-array>
+    <string name="questions">Questions</string>
+    <string name="categories">Categories</string>
 
 </resources>
