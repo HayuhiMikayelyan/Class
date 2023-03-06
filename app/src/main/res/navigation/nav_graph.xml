@@ -105,5 +105,14 @@
         android:id="@+id/testsFragment"
         android:name="com.example.aclass.home.tests.TestsFragment"
         android:label="fragment_tests"
-        tools:layout="@layout/fragment_tests" />
+        tools:layout="@layout/fragment_tests" >
+        <action
+            android:id="@+id/action_testsFragment_to_quizFragment"
+            app:destination="@id/quizFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizFragment"
+        android:name="com.example.aclass.home.tests.QuizFragment"
+        android:label="fragment_quiz"
+        tools:layout="@layout/fragment_quiz" />
 </navigation>

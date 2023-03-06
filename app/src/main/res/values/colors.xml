@@ -8,10 +8,15 @@
     <color name="primary_blue_dark">#0b2144</color>
     <!--    Secondary     -->
     <color name="secondary_red">#b5341b</color>
+    <color name="secondary_red_light">#E0ADA3</color>
 
     <!--    Other   -->
-    <color name="text_color">#475d89</color>
+    <color name="text_color">#54668A</color>
     <color name="back_color">#B4BEF4</color>
+    <color name="test_back_color">#5E76A9</color>
     <color name="secondary_text">#1F3F5E</color>
+    <color name="green">#196411</color>
+    <color name="green_light">#9CD29B</color>
+    <color name="variant_back">#8B96D0</color>
 
 </resources>

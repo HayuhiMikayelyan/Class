@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.aclass.databinding.ItemRecyclerBinding;
+import com.example.aclass.databinding.ItemClassBinding;
 
 import java.util.List;
 
@@ -16,9 +16,9 @@ public class ClassesAdapter extends RecyclerView.Adapter<ClassesAdapter.ClassesV
 
     static class ClassesViewHolder extends RecyclerView.ViewHolder{
 
-        ItemRecyclerBinding binding;
+        ItemClassBinding binding;
 
-        public ClassesViewHolder(ItemRecyclerBinding b) {
+        public ClassesViewHolder(ItemClassBinding b) {
             super(b.getRoot());
             binding = b;
         }
@@ -30,7 +30,7 @@ public class ClassesAdapter extends RecyclerView.Adapter<ClassesAdapter.ClassesV
     @NonNull
     @Override
     public ClassesAdapter.ClassesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ClassesViewHolder(ItemRecyclerBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false));
+        return new ClassesViewHolder(ItemClassBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false));
     }
 
     @Override

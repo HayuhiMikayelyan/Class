@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".home.tests.QuizFragment"
+    android:background="@color/test_back_color">
+
+
+    <ImageView
+        android:id="@+id/img_close"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_close"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:max="10"
+        android:progress="8"
+        android:progressTint="@color/primary_blue_dark"
+        android:scaleY="2.7"
+        app:layout_constraintBottom_toBottomOf="@id/img_close"
+        app:layout_constraintEnd_toStartOf="@id/tv_progress"
+        app:layout_constraintStart_toEndOf="@id/img_close"
+        app:layout_constraintTop_toTopOf="@id/img_close" />
+
+    <TextView
+        android:id="@+id/tv_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/reef"
+        android:textColor="@color/primary_blue_dark"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="@id/img_close"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/img_close"
+        tools:text="8/10" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="24dp"
+        android:backgroundTint="@color/primary_blue"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/progress"
+        app:layout_constraintVertical_bias="0.1">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tv_question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="-10dp"
+                android:fontFamily="@font/reef"
+                android:textColor="@color/primary_blue_dark"
+                android:textSize="24sp"
+                tools:text="Between which two countries was the Hundred Years War fought?" />
+        </FrameLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_variant1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/test_variant_unselected"
+        android:fontFamily="@font/reef"
+        android:paddingVertical="12dp"
+        android:paddingStart="18dp"
+        android:textColor="@color/secondary_text"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/card"
+        app:layout_constraintStart_toStartOf="@id/card"
+        app:layout_constraintTop_toBottomOf="@id/card"
+        tools:ignore="RtlSymmetry"
+        tools:text="Italy and Carthage" />
+
+    <TextView
+        android:id="@+id/tv_variant2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/test_variant_unselected"
+        android:fontFamily="@font/reef"
+        android:paddingVertical="12dp"
+        android:paddingStart="18dp"
+        android:textColor="@color/secondary_text"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_variant1"
+        app:layout_constraintStart_toStartOf="@id/tv_variant1"
+        app:layout_constraintTop_toBottomOf="@id/tv_variant1"
+        tools:ignore="RtlSymmetry"
+        tools:text="England and Germany" />
+
+    <TextView
+        android:id="@+id/tv_variant3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/test_variant_unselected"
+        android:fontFamily="@font/reef"
+        android:paddingVertical="12dp"
+        android:paddingStart="18dp"
+        android:textColor="@color/secondary_text"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_variant2"
+        app:layout_constraintStart_toStartOf="@id/tv_variant2"
+        app:layout_constraintTop_toBottomOf="@id/tv_variant2"
+        tools:ignore="RtlSymmetry"
+        tools:text="France and England" />
+
+    <TextView
+        android:id="@+id/tv_variant4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/test_variant_unselected"
+        android:fontFamily="@font/reef"
+        android:paddingVertical="12dp"
+        android:paddingStart="18dp"
+        android:textColor="@color/secondary_text"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_variant3"
+        app:layout_constraintStart_toStartOf="@id/tv_variant3"
+        app:layout_constraintTop_toBottomOf="@id/tv_variant3"
+        tools:ignore="RtlSymmetry"
+        tools:text="Spain and France" />
+
+    <ImageView
+        android:id="@+id/ic_variant1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/tv_variant1"
+        app:layout_constraintEnd_toEndOf="@id/tv_variant1"
+        app:layout_constraintTop_toTopOf="@id/tv_variant1" />
+
+    <ImageView
+        android:id="@+id/ic_variant2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/tv_variant2"
+        app:layout_constraintEnd_toEndOf="@id/tv_variant2"
+        app:layout_constraintTop_toTopOf="@id/tv_variant2" />
+
+    <ImageView
+        android:id="@+id/ic_variant3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/tv_variant3"
+        app:layout_constraintEnd_toEndOf="@id/tv_variant3"
+        app:layout_constraintTop_toTopOf="@id/tv_variant3" />
+
+    <ImageView
+        android:id="@+id/ic_variant4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/tv_variant4"
+        app:layout_constraintEnd_toEndOf="@id/tv_variant4"
+        app:layout_constraintTop_toTopOf="@id/tv_variant4" />
+
+    <Button
+        android:id="@id/btn_next"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round"
+        android:backgroundTint="@color/text_color"
+        android:fontFamily="@font/reef"
+        android:text="@string/next"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/card"
+        app:layout_constraintStart_toStartOf="@id/card"
+        app:layout_constraintTop_toBottomOf="@id/tv_variant4"
+        app:layout_constraintVertical_bias="0.4" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

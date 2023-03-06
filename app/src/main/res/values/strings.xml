@@ -58,5 +58,6 @@
     </string-array>
     <string name="questions">Questions</string>
     <string name="categories">Categories</string>
+    <string name="finish">Finish</string>
 
 </resources>

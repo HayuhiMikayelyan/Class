@@ -29,7 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_my_classes"
-        tools:listitem="@layout/item_recycler" />
+        tools:listitem="@layout/item_class" />
 
     <ImageView
         android:id="@id/img_no_classes"
