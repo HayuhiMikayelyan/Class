@@ -59,5 +59,8 @@
     <string name="questions">Questions</string>
     <string name="categories">Categories</string>
     <string name="finish">Finish</string>
+    <string name="results">Results</string>
+    <string name="total_correct_answers">Total correct answers</string>
+    <string name="go_back">Go back to tests</string>
 
 </resources>

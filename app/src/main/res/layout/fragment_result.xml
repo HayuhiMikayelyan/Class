@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".home.tests.ResultFragment"
+    android:background="@color/primary_blue_dark">
+
+    <TextView
+        android:id="@+id/tv_results"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/results"
+        android:textSize="32sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/variant_back"
+        android:fontFamily="@font/reef"/>
+
+    <TextView
+        android:id="@+id/tv_total_answers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_results"
+        android:text="@string/total_correct_answers"
+        android:textSize="24sp"
+        android:fontFamily="@font/reef"
+        android:layout_marginTop="24dp"
+        android:textColor="@color/variant_back"
+        android:layout_marginStart="16dp"/>
+    <TextView
+        android:id="@+id/tv_right_answers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/tv_total_answers"
+        app:layout_constraintTop_toBottomOf="@id/tv_total_answers"
+        tools:text="6 out of 10 Questions"
+        android:textSize="24sp"
+        android:fontFamily="@font/reef"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/secondary_red_light"/>
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_right_answers"
+        app:layout_constraintVertical_bias="0.16000003"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tv_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="60%"
+        android:textColor="@color/white"
+        android:fontFamily="@font/reef"
+        android:textSize="72sp"
+        app:layout_constraintBottom_toBottomOf="@+id/img"
+        app:layout_constraintEnd_toEndOf="@+id/img"
+        app:layout_constraintStart_toStartOf="@+id/img"
+        app:layout_constraintTop_toTopOf="@+id/img" />
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/go_back"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/img"
+        app:layout_constraintStart_toStartOf="@+id/img"
+        app:layout_constraintTop_toBottomOf="@id/img"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/round_corner"/>
+
+    <Button
+        android:id="@+id/btn_try_again"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/try_again"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/img"
+        app:layout_constraintStart_toStartOf="@+id/img"
+        app:layout_constraintTop_toBottomOf="@id/btn_back"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/round_corner"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

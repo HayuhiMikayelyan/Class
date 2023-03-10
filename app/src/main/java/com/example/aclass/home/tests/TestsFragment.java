@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.aclass.databinding.FragmentTestsBinding;
 import com.google.firebase.database.DataSnapshot;
@@ -27,6 +26,7 @@ public class TestsFragment extends Fragment {
 
     private TestsAdapter adapter;
     private List<Test> tests;
+    private String categoryS;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -35,15 +35,15 @@ public class TestsFragment extends Fragment {
         FragmentTestsBinding binding = FragmentTestsBinding.inflate(inflater, container, false);
 
         tests = new ArrayList<>();
-        adapter = new TestsAdapter(tests);
-        binding.recycler.setAdapter(adapter);
-        binding.recycler.setHasFixedSize(true);
-        binding.recycler.setLayoutManager(new LinearLayoutManager(requireContext()));
-
         if (getArguments() != null) {
+            categoryS = getArguments().getString("category");
             loadData(getArguments().getString("category"));
         }
 
+        adapter = new TestsAdapter(tests, categoryS);
+        binding.recycler.setAdapter(adapter);
+        binding.recycler.setHasFixedSize(true);
+        binding.recycler.setLayoutManager(new LinearLayoutManager(requireContext()));
 
         return binding.getRoot();
     }

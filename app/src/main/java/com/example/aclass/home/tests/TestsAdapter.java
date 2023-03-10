@@ -3,8 +3,9 @@ package com.example.aclass.home.tests;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +17,7 @@ import java.util.List;
 
 public class TestsAdapter extends RecyclerView.Adapter<TestsAdapter.TestsViewHolder> {
     private final List<Test> tests;
+    private final String category;
 
     static class TestsViewHolder extends RecyclerView.ViewHolder{
 
@@ -26,8 +28,9 @@ public class TestsAdapter extends RecyclerView.Adapter<TestsAdapter.TestsViewHol
             binding = b;
         }
     }
-    public TestsAdapter(List<Test> tests) {
+    public TestsAdapter(List<Test> tests, String category) {
         this.tests = tests;
+        this.category = category;
     }
 
     @NonNull
@@ -47,6 +50,7 @@ public class TestsAdapter extends RecyclerView.Adapter<TestsAdapter.TestsViewHol
         holder.itemView.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
             bundle.putParcelable("test",tests.get(position));
+            bundle.putString("category",category);
             Navigation.findNavController(v).navigate(R.id.action_testsFragment_to_quizFragment,bundle);
         });
     }

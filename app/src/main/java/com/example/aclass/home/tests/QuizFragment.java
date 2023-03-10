@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,10 @@ import android.widget.Toast;
 
 import com.example.aclass.R;
 import com.example.aclass.databinding.FragmentQuizBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,6 +32,7 @@ public class QuizFragment extends Fragment {
     private Test test;
     private int quizNumber = 0;
     private int rightAnswers = 0;
+    private String category;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -36,6 +42,7 @@ public class QuizFragment extends Fragment {
         binding = FragmentQuizBinding.inflate(inflater, container, false);
         if (getArguments() != null) {
             test = getArguments().getParcelable("test");
+            category = getArguments().getString("category");
             setQuestions();
         }
         binding.progress.setProgress(0);
@@ -84,7 +91,7 @@ public class QuizFragment extends Fragment {
 
                         for (int j = 0; j < variants.length; j++) {
                             TextView variant = variants[j];
-                            if (variant.getText().toString().equals(test.getRightAnswer().get(quizNumber))){
+                            if (variant.getText().toString().equals(test.getRightAnswer().get(quizNumber))) {
                                 variant.setBackgroundResource(R.drawable.test_variant_right);
                                 variant.setTextColor(getResources().getColor(R.color.green));
                                 icons[j].setImageResource(R.drawable.ic_right);
@@ -99,16 +106,23 @@ public class QuizFragment extends Fragment {
             i++;
         }
 
-        if (quizNumber == test.getQuestions().size()-1){
+        if (quizNumber == test.getQuestions().size() - 1) {
             binding.btnNext.setText(getText(R.string.finish));
         }
         binding.btnNext.setOnClickListener(v -> {
             if (isSelected.compareAndSet(true, false)) {
-                if (quizNumber < test.getQuestions().size()-1) {
+                if (quizNumber < test.getQuestions().size() - 1) {
                     quizNumber++;
                     setQuestions();
                 } else {
-                    Toast.makeText(requireContext(), "Finish - "+rightAnswers, Toast.LENGTH_SHORT).show();
+                    DatabaseReference db = FirebaseDatabase.getInstance().getReference("tests")
+                            .child(category).child(String.valueOf(test.getId())).child("progress");
+                    db.setValue(rightAnswers * 100 / test.getQuestions().size());
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable("test",test);
+                    bundle.putString("category",category);
+                    bundle.putInt("right",rightAnswers);
+                    Navigation.findNavController(v).navigate(R.id.action_quizFragment_to_resultFragment,bundle);
                 }
 
             }
