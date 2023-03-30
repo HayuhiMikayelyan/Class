@@ -3,22 +3,18 @@ package com.example.aclass.home.profile;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.aclass.R;
 import com.example.aclass.auth.User;
 import com.example.aclass.databinding.FragmentProfileBinding;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
@@ -30,7 +26,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        com.example.aclass.databinding.FragmentProfileBinding binding = FragmentProfileBinding.inflate(inflater, container, false);
+        FragmentProfileBinding binding = FragmentProfileBinding.inflate(inflater, container, false);
 
         FirebaseFirestore.getInstance().collection("users").document(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).addSnapshotListener((value, error) -> {
             if (value != null) {
@@ -41,6 +37,10 @@ public class ProfileFragment extends Fragment {
                     Picasso.with(requireContext()).load(user.getIcon()).into(binding.img);
                 }
             }
+        });
+
+        binding.imgChange.setOnClickListener(v -> {
+            Navigation.findNavController(v).navigate(R.id.action_profileFragment_to_editProfileFragment);
         });
 
 

@@ -30,7 +30,11 @@
         android:id="@+id/profileFragment"
         android:name="com.example.aclass.home.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/testsFragment"
         android:name="com.example.aclass.home.tests.TestsFragment"
@@ -71,4 +75,13 @@
         android:name="com.example.aclass.home.classes.JoinToClassFragment"
         android:label="fragment_join_to_class"
         tools:layout="@layout/fragment_join_to_class" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.aclass.home.profile.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" >
+        <action
+            android:id="@+id/action_editProfileFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
 </navigation>

@@ -63,5 +63,7 @@
     <string name="total_correct_answers">Total correct answers</string>
     <string name="go_back">Go back to tests</string>
     <string name="my_profile">My Profile</string>
+    <string name="change_image">Change Image</string>
+    <string name="save_changes">Save changes</string>
 
 </resources>
