@@ -8,15 +8,18 @@ public class User {
     private String name;
     private List<String> classes;
     private String id;
+    private String icon;
 
-    public User() {}
+    public User() {
+    }
 
-    public User(String email, Boolean isTeacher, String name, List<String> classes, String id) {
+    public User(String email, Boolean isTeacher, String name, List<String> classes, String id, String icon) {
         this.email = email;
         this.isTeacher = isTeacher;
         this.name = name;
         this.classes = classes;
         this.id = id;
+        this.icon = icon;
     }
 
     public String getId() {
@@ -57,5 +60,13 @@ public class User {
 
     public void setClasses(List<String> classes) {
         this.classes = classes;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 }
