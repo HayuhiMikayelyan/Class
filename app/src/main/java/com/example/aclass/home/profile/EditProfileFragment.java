@@ -13,18 +13,13 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.aclass.R;
 import com.example.aclass.auth.User;
 import com.example.aclass.databinding.FragmentEditProfileBinding;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -39,8 +34,7 @@ public class EditProfileFragment extends Fragment {
     private Uri uri = null;
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentEditProfileBinding.inflate(inflater, container, false);
 
@@ -55,9 +49,7 @@ public class EditProfileFragment extends Fragment {
             }
         });
 
-        binding.tvChangeIcon.setOnClickListener(v -> {
-            changeImage();
-        });
+        binding.tvChangeIcon.setOnClickListener(v -> changeImage());
 
         binding.btnSave.setOnClickListener(v -> {
             Map<String, Object> user = new HashMap<>();

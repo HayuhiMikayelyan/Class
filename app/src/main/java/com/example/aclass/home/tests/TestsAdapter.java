@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
@@ -24,7 +23,7 @@ public class TestsAdapter extends RecyclerView.Adapter<TestsAdapter.TestsViewHol
     private final List<Test> tests;
     private final String category;
 
-    static class TestsViewHolder extends RecyclerView.ViewHolder{
+    static class TestsViewHolder extends RecyclerView.ViewHolder {
 
         ItemTestBinding binding;
 
@@ -33,6 +32,7 @@ public class TestsAdapter extends RecyclerView.Adapter<TestsAdapter.TestsViewHol
             binding = b;
         }
     }
+
     public TestsAdapter(List<Test> tests, String category) {
         this.tests = tests;
         this.category = category;
@@ -41,24 +41,24 @@ public class TestsAdapter extends RecyclerView.Adapter<TestsAdapter.TestsViewHol
     @NonNull
     @Override
     public TestsAdapter.TestsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new TestsAdapter.TestsViewHolder(ItemTestBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false));
+        return new TestsAdapter.TestsViewHolder(ItemTestBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
     }
 
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull TestsAdapter.TestsViewHolder holder, int position) {
         holder.binding.tvTitle.setText(tests.get(position).getName());
-        holder.binding.tvSubtitle.setText(tests.get(position).getQuestions().size()+" "+holder.itemView.getContext().getText(R.string.questions));
+        holder.binding.tvSubtitle.setText(tests.get(position).getQuestions().size() + " " + holder.itemView.getContext().getText(R.string.questions));
         holder.binding.tvProgress.setText("0%");
         holder.binding.progressBar.setProgress(0);
         FirebaseFirestore.getInstance().collection("users").document(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).addSnapshotListener((value, error) -> {
-            if (value!=null){
+            if (value != null) {
                 User user = value.toObject(User.class);
-                if (user!=null && user.getTests()!=null){
+                if (user != null && user.getTests() != null) {
                     for (Map<String, Integer> map : user.getTests()) {
-                        if (map.get(tests.get(position).getId())!=null){
+                        if (map.get(tests.get(position).getId()) != null) {
                             holder.binding.progressBar.setProgress(map.get(tests.get(position).getId()));
-                            holder.binding.tvProgress.setText(map.get(tests.get(position).getId())+"%");
+                            holder.binding.tvProgress.setText(map.get(tests.get(position).getId()) + "%");
                         }
                     }
                 }
@@ -66,9 +66,9 @@ public class TestsAdapter extends RecyclerView.Adapter<TestsAdapter.TestsViewHol
         });
         holder.itemView.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
-            bundle.putParcelable("test",tests.get(position));
-            bundle.putString("category",category);
-            Navigation.findNavController(v).navigate(R.id.action_testsFragment_to_quizFragment,bundle);
+            bundle.putParcelable("test", tests.get(position));
+            bundle.putString("category", category);
+            Navigation.findNavController(v).navigate(R.id.action_testsFragment_to_quizFragment, bundle);
         });
     }
 

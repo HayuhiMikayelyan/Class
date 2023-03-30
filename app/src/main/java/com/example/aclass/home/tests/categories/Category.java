@@ -11,7 +11,8 @@ public class Category {
         this.count = count;
     }
 
-    public Category() {}
+    public Category() {
+    }
 
     public String getIcon() {
         return icon;

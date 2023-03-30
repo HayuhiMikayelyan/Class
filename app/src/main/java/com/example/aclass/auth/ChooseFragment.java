@@ -46,8 +46,8 @@ public class ChooseFragment extends Fragment {
         binding.btnNext.setOnClickListener(view -> {
             if (isSelected) {
                 Bundle bundle = new Bundle();
-                bundle.putBoolean("isTeacher",isTeacher);
-                Navigation.findNavController(view).navigate(R.id.action_chooseFragment_to_registerFragment,bundle);
+                bundle.putBoolean("isTeacher", isTeacher);
+                Navigation.findNavController(view).navigate(R.id.action_chooseFragment_to_registerFragment, bundle);
             }
         });
 

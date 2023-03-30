@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.aclass.R;
-import com.example.aclass.databinding.FragmentTestsBinding;
 import com.example.aclass.databinding.FragmentTestsCategoriesBinding;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -34,10 +33,10 @@ public class TestCategoriesFragment extends Fragment {
 
         categoryList = new ArrayList<>();
 
-        adapter = new TestCategoriesAdapter(categoryList,requireContext());
+        adapter = new TestCategoriesAdapter(categoryList, requireContext());
 
         binding.recycler.setHasFixedSize(true);
-        binding.recycler.setLayoutManager(new GridLayoutManager(requireContext(),2));
+        binding.recycler.setLayoutManager(new GridLayoutManager(requireContext(), 2));
         binding.recycler.setAdapter(adapter);
 
         getCategories();
@@ -50,7 +49,7 @@ public class TestCategoriesFragment extends Fragment {
     private void getCategories() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("categories").addSnapshotListener((value, error) -> {
-            if (value!=null){
+            if (value != null) {
                 for (DocumentChange documentChange : value.getDocumentChanges()) {
                     categoryList.add(documentChange.getDocument().toObject(Category.class));
                 }

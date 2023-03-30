@@ -14,7 +14,7 @@ import java.util.List;
 public class ClassesAdapter extends RecyclerView.Adapter<ClassesAdapter.ClassesViewHolder> {
     private final List<Class> classes;
 
-    static class ClassesViewHolder extends RecyclerView.ViewHolder{
+    static class ClassesViewHolder extends RecyclerView.ViewHolder {
 
         ItemClassBinding binding;
 
@@ -23,6 +23,7 @@ public class ClassesAdapter extends RecyclerView.Adapter<ClassesAdapter.ClassesV
             binding = b;
         }
     }
+
     public ClassesAdapter(List<Class> classes) {
         this.classes = classes;
     }
@@ -30,7 +31,7 @@ public class ClassesAdapter extends RecyclerView.Adapter<ClassesAdapter.ClassesV
     @NonNull
     @Override
     public ClassesAdapter.ClassesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ClassesViewHolder(ItemClassBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false));
+        return new ClassesViewHolder(ItemClassBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
     }
 
     @Override

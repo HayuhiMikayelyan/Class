@@ -51,13 +51,13 @@ public class TestCategoriesAdapter extends RecyclerView.Adapter<TestCategoriesAd
     public void onBindViewHolder(@NonNull TestCategoriesViewHolder holder, int position) {
         Category category = categories.get(position);
         holder.binding.tvCategory.setText(category.getName());
-        holder.binding.tvTestCount.setText(category.getCount() +" "+context.getText(R.string.tests));
+        holder.binding.tvTestCount.setText(category.getCount() + " " + context.getText(R.string.tests));
         Picasso.with(context).load(category.getIcon()).into(holder.binding.icCategory);
 
         holder.itemView.setOnClickListener((View v) -> {
             Bundle bundle = new Bundle();
-            bundle.putString("category",category.getName());
-            Navigation.findNavController(v).navigate(R.id.action_testCategoriesFragment_to_testsFragment,bundle);
+            bundle.putString("category", category.getName());
+            Navigation.findNavController(v).navigate(R.id.action_testCategoriesFragment_to_testsFragment, bundle);
         });
     }
 

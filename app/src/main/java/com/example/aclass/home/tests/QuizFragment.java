@@ -113,10 +113,10 @@ public class QuizFragment extends Fragment {
                 } else {
 
                     Bundle bundle = new Bundle();
-                    bundle.putParcelable("test",test);
-                    bundle.putString("category",category);
-                    bundle.putInt("right",rightAnswers);
-                    Navigation.findNavController(v).navigate(R.id.action_quizFragment_to_resultFragment,bundle);
+                    bundle.putParcelable("test", test);
+                    bundle.putString("category", category);
+                    bundle.putInt("right", rightAnswers);
+                    Navigation.findNavController(v).navigate(R.id.action_quizFragment_to_resultFragment, bundle);
                 }
 
             }

@@ -69,7 +69,7 @@ public class ClassesFragment extends Fragment {
         String id = Objects.requireNonNull(auth.getCurrentUser()).getUid();
 
         db.collection("users").addSnapshotListener((value, error) -> {
-            if (value!=null){
+            if (value != null) {
                 for (DocumentChange documentChange : value.getDocumentChanges()) {
                     User user = documentChange.getDocument().toObject(User.class);
                     if (user.getId().equals(id)) {
