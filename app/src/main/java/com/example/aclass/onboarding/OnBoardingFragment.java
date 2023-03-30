@@ -1,6 +1,7 @@
 package com.example.aclass.onboarding;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -17,13 +18,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.aclass.R;
+import com.example.aclass.basic.MainActivity;
 import com.example.aclass.databinding.FragmentOnBoardingBinding;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 
 public class OnBoardingFragment extends Fragment {
@@ -43,7 +44,9 @@ public class OnBoardingFragment extends Fragment {
             if (FirebaseAuth.getInstance().getCurrentUser()==null){
                 Navigation.findNavController(container).navigate(R.id.action_onBoardingFragment_to_signInOrRegisterFragment);
             } else {
-                Navigation.findNavController(container).navigate(R.id.action_onBoardingFragment_to_homeFragment);
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+                requireActivity().finish();
             }
         }
         setupOnBoardingItems();
@@ -76,17 +79,17 @@ public class OnBoardingFragment extends Fragment {
         List<OnBoardingItem> onBoardingItems = new ArrayList<>();
 
         OnBoardingItem item1 = new OnBoardingItem(
-                R.drawable.ic_teacher_and_student,
+                R.drawable.on_boarding_1,
                 getString(R.string.on_boarding_title_1),
                 getString(R.string.on_boarding_description_1));
 
         OnBoardingItem item2 = new OnBoardingItem(
-                R.drawable.ic_exam,
+                R.drawable.on_boarding_2,
                 getString(R.string.on_boarding_title_2),
                 getString(R.string.on_boarding_description_2));
 
         OnBoardingItem item3 = new OnBoardingItem(
-                R.drawable.ic_ready_tests,
+                R.drawable.on_boarding_3,
                 getString(R.string.on_boarding_title_3),
                 getString(R.string.on_boarding_description_3));
 

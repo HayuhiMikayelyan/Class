@@ -2,7 +2,7 @@
     <string name="app_name">Class</string>
     <string name="teacher">Teacher</string>
     <string name="student">Student</string>
-    <string name="next">Next</string>
+    <string name="next">next</string>
     <string name="choose_text">Who are you?</string>
     <string name="start">Let\'s start</string>
     <string name="on_boarding_title_1">Teachers &amp; Students</string>
@@ -62,5 +62,6 @@
     <string name="results">Results</string>
     <string name="total_correct_answers">Total correct answers</string>
     <string name="go_back">Go back to tests</string>
+    <string name="my_profile">My Profile</string>
 
 </resources>

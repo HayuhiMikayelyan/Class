@@ -51,9 +51,9 @@ public class ClassesFragment extends Fragment {
 
         binding.btnAddClass.setOnClickListener(v -> {
             if (!isTeacher) {
-                Navigation.findNavController(v).navigate(R.id.action_homeFragment_to_joinToClassFragment);
+                Navigation.findNavController(v).navigate(R.id.action_classesFragment_to_joinToClassFragment2);
             } else {
-                Navigation.findNavController(v).navigate(R.id.action_homeFragment_to_createClassFragment);
+                Navigation.findNavController(v).navigate(R.id.action_classesFragment_to_createClassFragment2);
             }
         });
 

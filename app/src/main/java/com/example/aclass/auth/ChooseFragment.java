@@ -26,8 +26,8 @@ public class ChooseFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentChooseBinding.inflate(inflater, container, false);
 
-        ColorStateList selected = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.primary_blue_dark));
-        ColorStateList unselected = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.primary_blue_light));
+        ColorStateList selected = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.blue_dark));
+        ColorStateList unselected = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.blue_light));
 
         binding.viewTeacher.setOnClickListener(view -> {
             isTeacher = true;

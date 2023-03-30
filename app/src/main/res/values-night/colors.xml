@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <color name="black">#FF000000</color>
     <color name="white">#C1E0EC</color>
 
     <!--    Blue     -->
-    <color name="blue">#1A5FA2</color>
-    <color name="blue_light">#A3CAD9</color>
+    <color name="blue">#2E6BA6</color>
+    <color name="blue_light">#C1E0EC</color>
     <color name="blue_dark">#0E2859</color>
 
     <!--    Red     -->
-    <color name="red">#C96143</color>
+    <color name="red">#B86047</color>
     <color name="red_light">#E0ADA3</color>
     <color name="red_dark">#9A4933</color>
 
     <!--    Light   -->
-    <color name="light">#C2B3BA</color>
+    <color name="light">#E0C5D2</color>
 
     <!--    Other   -->
-    <color name="text_color">#0E2859</color>
-    <color name="back_color">#FFFFFF</color>
+    <color name="text_color">#C1E0EC</color>
+    <color name="back_color">#294272</color>
     <color name="button_color">#2166AB</color>
-    <color name="button_text_color">#FFFFFF</color>
+    <color name="button_text_color">#C1E0EC</color>
+
 
     <color name="test_back_color">#5E76A9</color>
     <color name="secondary_text">#1F3F5E</color>

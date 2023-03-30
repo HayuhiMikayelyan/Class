@@ -1,12 +1,11 @@
-package com.example.aclass.student;
+package com.example.aclass.home.classes;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,9 +13,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.aclass.R;
+import com.example.aclass.basic.MainActivity;
 import com.example.aclass.databinding.FragmentJoinToClassBinding;
-import com.example.aclass.teacher.CreateClassFragment;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -34,6 +32,7 @@ import java.util.Objects;
 public class JoinToClassFragment extends Fragment {
 
     private ProgressDialog progressDialog;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -57,7 +56,9 @@ public class JoinToClassFragment extends Fragment {
                 } else {
                     DocumentReference documentReference1 = firestore.collection("users").document(Objects.requireNonNull(auth.getCurrentUser()).getUid());
                     documentReference1.update("classes", FieldValue.arrayUnion(id));
-                    NavHostFragment.findNavController(JoinToClassFragment.this).navigate(R.id.action_joinToClassFragment_to_homeFragment);
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    startActivity(intent);
+                    requireActivity().finish();
                 }
             });
         });
@@ -69,8 +70,10 @@ public class JoinToClassFragment extends Fragment {
             users.put("classes", Collections.singletonList(""));
             documentReference1.set(users, SetOptions.merge()).addOnCompleteListener(task2 -> {
                 dismissProgress();
-                if (task2.isSuccessful()){
-                    NavHostFragment.findNavController(JoinToClassFragment.this).navigate(R.id.action_joinToClassFragment_to_homeFragment);
+                if (task2.isSuccessful()) {
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    startActivity(intent);
+                    requireActivity().finish();
                 } else {
                     Toast.makeText(requireContext(), getString(R.string.try_again), Toast.LENGTH_LONG).show();
                 }
@@ -80,7 +83,7 @@ public class JoinToClassFragment extends Fragment {
         return binding.getRoot();
     }
 
-    private void showProgress(){
+    private void showProgress() {
         progressDialog = new ProgressDialog(requireContext());
         progressDialog.setMessage(getString(R.string.wait));
         progressDialog.setTitle(getString(R.string.join));
@@ -88,7 +91,7 @@ public class JoinToClassFragment extends Fragment {
         progressDialog.show();
     }
 
-    private void dismissProgress(){
+    private void dismissProgress() {
         progressDialog.dismiss();
     }
 }

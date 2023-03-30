@@ -12,16 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.aclass.R;
 import com.example.aclass.databinding.FragmentQuizBinding;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -48,6 +42,8 @@ public class QuizFragment extends Fragment {
         binding.progress.setProgress(0);
         binding.progress.setMax(test.getQuestions().size());
         binding.tvProgress.setText("0/" + test.getQuestions().size());
+
+        binding.imgClose.setOnClickListener(v -> requireActivity().onBackPressed());
 
         return binding.getRoot();
     }
@@ -85,7 +81,7 @@ public class QuizFragment extends Fragment {
                         rightAnswers++;
                     } else {
                         variants[finalI].setBackgroundResource(R.drawable.test_variant_wrong);
-                        variants[finalI].setTextColor(getResources().getColor(R.color.secondary_red));
+                        variants[finalI].setTextColor(getResources().getColor(R.color.red));
                         icons[finalI].setImageResource(R.drawable.ic_wrong);
                         icons[finalI].setVisibility(View.VISIBLE);
 
@@ -115,9 +111,7 @@ public class QuizFragment extends Fragment {
                     quizNumber++;
                     setQuestions();
                 } else {
-                    DatabaseReference db = FirebaseDatabase.getInstance().getReference("tests")
-                            .child(category).child(String.valueOf(test.getId())).child("progress");
-                    db.setValue(rightAnswers * 100 / test.getQuestions().size());
+
                     Bundle bundle = new Bundle();
                     bundle.putParcelable("test",test);
                     bundle.putString("category",category);

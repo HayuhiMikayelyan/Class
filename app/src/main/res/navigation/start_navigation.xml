@@ -27,9 +27,6 @@
         <action
             android:id="@+id/action_onBoardingFragment_to_signInOrRegisterFragment"
             app:destination="@id/signInOrRegisterFragment" />
-        <action
-            android:id="@+id/action_onBoardingFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/signInOrRegisterFragment"
@@ -63,72 +60,15 @@
         android:id="@+id/signInFragment"
         android:name="com.example.aclass.auth.SignInFragment"
         android:label="fragment_sign_in"
-        tools:layout="@layout/fragment_sign_in">
-        <action
-            android:id="@+id/action_signInFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_sign_in"/>
     <fragment
         android:id="@+id/createClassFragment"
-        android:name="com.example.aclass.teacher.CreateClassFragment"
+        android:name="com.example.aclass.home.classes.CreateClassFragment"
         android:label="fragment_create_class"
-        tools:layout="@layout/fragment_create_class" >
-        <action
-            android:id="@+id/action_createClassFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.example.aclass.fragments.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_homeFragment_to_joinToClassFragment"
-            app:destination="@id/joinToClassFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_createClassFragment"
-            app:destination="@id/createClassFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_testsFragment"
-            app:destination="@id/testsFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_create_class" />
     <fragment
         android:id="@+id/joinToClassFragment"
-        android:name="com.example.aclass.student.JoinToClassFragment"
+        android:name="com.example.aclass.home.classes.JoinToClassFragment"
         android:label="fragment_join_to_class"
-        tools:layout="@layout/fragment_join_to_class" >
-        <action
-            android:id="@+id/action_joinToClassFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/testsFragment"
-        android:name="com.example.aclass.home.tests.TestsFragment"
-        android:label="fragment_tests"
-        tools:layout="@layout/fragment_tests" >
-        <action
-            android:id="@+id/action_testsFragment_to_quizFragment"
-            app:destination="@id/quizFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/quizFragment"
-        android:name="com.example.aclass.home.tests.QuizFragment"
-        android:label="fragment_quiz"
-        tools:layout="@layout/fragment_quiz" >
-        <action
-            android:id="@+id/action_quizFragment_to_resultFragment"
-            app:destination="@id/resultFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/resultFragment"
-        android:name="com.example.aclass.home.tests.ResultFragment"
-        android:label="fragment_result"
-        tools:layout="@layout/fragment_result" >
-        <action
-            android:id="@+id/action_resultFragment_to_quizFragment"
-            app:destination="@id/quizFragment" />
-        <action
-            android:id="@+id/action_resultFragment_to_testsFragment"
-            app:destination="@id/testsFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_join_to_class" />
 </navigation>

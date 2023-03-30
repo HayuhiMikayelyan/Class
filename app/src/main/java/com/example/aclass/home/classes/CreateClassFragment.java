@@ -1,5 +1,6 @@
-package com.example.aclass.teacher;
+package com.example.aclass.home.classes;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,12 +14,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.example.aclass.R;
+import com.example.aclass.basic.MainActivity;
 import com.example.aclass.databinding.FragmentCreateClassBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -45,9 +48,9 @@ public class CreateClassFragment extends Fragment {
         binding.filledExposed.setOnItemClickListener((adapterView, view, i, l) -> subject = adapterView.getItemAtPosition(i).toString());
 
         binding.btnCreateClass.setOnClickListener(view -> {
-            String id = UUID.randomUUID().toString().replace("-","").substring(0,8);
+            String id = UUID.randomUUID().toString().replace("-", "").substring(0, 8);
             String className = Objects.requireNonNull(binding.edtClassName.getEditText()).getText().toString();
-            if (!className.equals("") && !subject.equals("")){
+            if (!className.equals("") && !subject.equals("")) {
 
                 FirebaseFirestore store = FirebaseFirestore.getInstance();
                 FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -55,16 +58,17 @@ public class CreateClassFragment extends Fragment {
                 DocumentReference documentReference = store.collection("classes").document(id);
 
                 Map<String, String> classes = new HashMap<>();
-                classes.put("id",id);
-                classes.put("className",className);
-                classes.put("subject",subject);
+                classes.put("id", id);
+                classes.put("className", className);
+                classes.put("subject", subject);
 
                 documentReference.set(classes).addOnSuccessListener(unused -> {
-                    if (auth.getCurrentUser()!=null){
+                    if (auth.getCurrentUser() != null) {
                         DocumentReference documentReference1 = store.collection("users").document(auth.getCurrentUser().getUid());
                         documentReference1.update("classes", FieldValue.arrayUnion(id));
-                        NavHostFragment.findNavController(CreateClassFragment.this).navigate(R.id.action_createClassFragment_to_homeFragment);
-
+                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                        startActivity(intent);
+                        requireActivity().finish();
                     }
                 });
 

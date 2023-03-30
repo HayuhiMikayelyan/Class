@@ -5,7 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".auth.SignInFragment"
-    android:background="@drawable/background2">
+    android:background="@color/back_color">
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/background2"
+        android:scaleType="centerCrop"/>
 
     <ImageView
         android:id="@+id/img"
@@ -30,8 +41,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/img"
-        app:boxStrokeColor="@color/primary_blue_dark"
-        app:hintTextColor="@color/primary_blue_dark"
+        app:boxStrokeColor="@color/text_color"
+        app:hintTextColor="@color/text_color"
         app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -52,8 +63,8 @@
         app:layout_constraintEnd_toEndOf="@id/edt_email"
         app:layout_constraintStart_toStartOf="@id/edt_email"
         app:layout_constraintTop_toBottomOf="@id/edt_email"
-        app:boxStrokeColor="@color/primary_blue_dark"
-        app:hintTextColor="@color/primary_blue_dark"
+        app:boxStrokeColor="@color/text_color"
+        app:hintTextColor="@color/text_color"
         android:layout_marginHorizontal="24dp"
 
         app:errorEnabled="true">
@@ -73,6 +84,6 @@
         app:layout_constraintTop_toBottomOf="@id/edt_password"
         android:layout_marginTop="16dp"
         android:textSize="18sp"
-        android:backgroundTint="@color/primary_blue_dark"
+        android:textColor="@color/button_text_color"
         android:text="@string/sign_in"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,7 +11,7 @@
     <ImageView
         android:id="@+id/img_on_boarding"
         android:layout_width="330dp"
-        android:layout_height="300dp"
+        android:layout_height="330dp"
         android:layout_margin="15dp"
         android:adjustViewBounds="true"
         android:contentDescription="@string/app_name" />

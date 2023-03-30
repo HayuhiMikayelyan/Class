@@ -1,6 +1,7 @@
 package com.example.aclass.auth;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.aclass.R;
+import com.example.aclass.basic.MainActivity;
 import com.example.aclass.databinding.FragmentSignInBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -24,8 +26,6 @@ public class SignInFragment extends Fragment {
     private FragmentSignInBinding binding;
     private ProgressDialog progressDialog;
     private FirebaseAuth auth;
-
-
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -62,7 +62,9 @@ public class SignInFragment extends Fragment {
             auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
                 progressDialog.dismiss();
                 if (task.isSuccessful()) {
-                    Navigation.findNavController(view).navigate(R.id.action_signInFragment_to_homeFragment);
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    startActivity(intent);
+                    requireActivity().finish();
                 } else {
                     Toast.makeText(requireContext(), R.string.wrong_email_password, Toast.LENGTH_LONG).show();
                 }

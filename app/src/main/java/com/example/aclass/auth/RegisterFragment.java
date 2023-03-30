@@ -13,8 +13,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.aclass.R;
-import com.example.aclass.databinding.FragmentRegisterBinding;
 
+import com.example.aclass.databinding.FragmentRegisterBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;

@@ -57,7 +57,7 @@ public class TestCategoriesAdapter extends RecyclerView.Adapter<TestCategoriesAd
         holder.itemView.setOnClickListener((View v) -> {
             Bundle bundle = new Bundle();
             bundle.putString("category",category.getName());
-            Navigation.findNavController(v).navigate(R.id.action_homeFragment_to_testsFragment,bundle);
+            Navigation.findNavController(v).navigate(R.id.action_testCategoriesFragment_to_testsFragment,bundle);
         });
     }
 

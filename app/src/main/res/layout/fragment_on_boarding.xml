@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".onboarding.OnBoardingFragment">
+    tools:context=".onboarding.OnBoardingFragment"
+    android:background="@color/back_color">
 
     <Button
         android:id="@+id/btn_next"
@@ -15,6 +16,10 @@
         android:background="@drawable/round"
         android:fontFamily="@font/reef"
         android:textSize="22sp"
+        android:textAllCaps="false"
+        android:text="@string/next"
+        android:backgroundTint="@color/red"
+        android:textColor="@color/button_text_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

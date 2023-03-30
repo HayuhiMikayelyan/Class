@@ -4,8 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".student.JoinToClassFragment"
-    android:background="@drawable/background4">
+    tools:context=".home.classes.JoinToClassFragment"
+    android:background="@color/back_color">
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/background4"
+        android:scaleType="centerCrop"/>
 
 
     <TextView
@@ -14,7 +25,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/reef"
         android:text="@string/join_to_your_class"
-        android:textColor="@color/primary_blue"
+        android:textColor="@color/text_color"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,16 +41,16 @@
         android:layout_marginHorizontal="24dp"
         android:layout_marginTop="28dp"
         android:hint="@string/code"
-        app:boxStrokeColor="@color/primary_blue_dark"
+        app:boxStrokeColor="@color/text_color"
         app:counterEnabled="true"
         app:counterMaxLength="8"
         app:errorEnabled="true"
-        app:hintTextColor="@color/primary_blue_dark"
+        app:hintTextColor="@color/text_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_create_class"
         app:startIconDrawable="@drawable/ic_password"
-        app:startIconTint="@color/primary_blue_dark"
+        app:startIconTint="@color/text_color"
         app:endIconMode="password_toggle">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -55,7 +66,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/reef"
         android:text="@string/ask_code"
-        android:textColor="@color/primary_blue"
+        android:textColor="@color/text_color"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@id/edt_code"
         app:layout_constraintTop_toBottomOf="@id/edt_code" />
@@ -67,6 +78,7 @@
         android:layout_marginTop="48dp"
         android:text="@string/join"
         android:textAllCaps="false"
+        android:textColor="@color/button_text_color"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/edt_code"
         app:layout_constraintStart_toStartOf="@+id/edt_code"
@@ -80,7 +92,8 @@
         android:text="@string/join_later"
         android:textAllCaps="false"
         android:textSize="16sp"
-        android:backgroundTint="@color/primary_blue_light"
+        android:backgroundTint="@color/blue_light"
+        android:textColor="@color/blue"
         app:layout_constraintEnd_toEndOf="@+id/btn_join"
         app:layout_constraintStart_toStartOf="@+id/btn_join"
         app:layout_constraintTop_toBottomOf="@+id/btn_join" />

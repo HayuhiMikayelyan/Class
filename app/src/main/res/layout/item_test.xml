@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="6dp"
-    android:backgroundTint="@color/back_color"
+    android:backgroundTint="@color/blue_light"
     app:cardCornerRadius="8dp"
     app:cardElevation="8dp">
 
@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/reef"
-            android:textColor="@color/primary_blue_dark"
+            android:textColor="@color/blue_dark"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -47,7 +47,7 @@
             android:progress="10"
             android:progressDrawable="@drawable/circle"
             android:rotation="-90"
-            app:indicatorColor="@color/secondary_red"
+            app:indicatorColor="@color/blue_dark"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -59,7 +59,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             tools:text="10%"
             android:fontFamily="@font/reef"
-            android:textColor="@color/primary_blue_dark"
+            android:textColor="@color/blue_dark"
             app:layout_constraintStart_toStartOf="@id/progressBar"
             app:layout_constraintEnd_toEndOf="@id/progressBar"
             app:layout_constraintTop_toTopOf="@id/progressBar"

@@ -30,8 +30,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:boxStrokeColor="@color/primary_blue_dark"
-        app:hintTextColor="@color/primary_blue_dark"
+        app:boxStrokeColor="@color/blue_dark"
+        app:hintTextColor="@color/blue_dark"
         app:errorEnabled="true"
         app:counterEnabled="true"
         app:counterMaxLength="25">
@@ -56,8 +56,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edt_name"
-        app:boxStrokeColor="@color/primary_blue_dark"
-        app:hintTextColor="@color/primary_blue_dark"
+        app:boxStrokeColor="@color/blue_dark"
+        app:hintTextColor="@color/blue_dark"
         app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -78,8 +78,8 @@
         app:layout_constraintEnd_toEndOf="@id/edt_email"
         app:layout_constraintStart_toStartOf="@id/edt_email"
         app:layout_constraintTop_toBottomOf="@id/edt_email"
-        app:boxStrokeColor="@color/primary_blue_dark"
-        app:hintTextColor="@color/primary_blue_dark"
+        app:boxStrokeColor="@color/blue_dark"
+        app:hintTextColor="@color/blue_dark"
         android:layout_marginHorizontal="24dp"
         app:errorEnabled="true">
 
@@ -101,8 +101,8 @@
         app:layout_constraintEnd_toEndOf="@id/edt_email"
         app:layout_constraintStart_toStartOf="@id/edt_email"
         app:layout_constraintTop_toBottomOf="@id/edt_password"
-        app:boxStrokeColor="@color/primary_blue_dark"
-        app:hintTextColor="@color/primary_blue_dark"
+        app:boxStrokeColor="@color/blue_dark"
+        app:hintTextColor="@color/blue_dark"
         android:layout_marginHorizontal="24dp"
         app:errorEnabled="true">
 
@@ -121,6 +121,6 @@
         app:layout_constraintTop_toBottomOf="@id/edt_repeat_password"
         android:layout_marginTop="16dp"
         android:textSize="18sp"
-        android:backgroundTint="@color/primary_blue_dark"
+        android:textColor="@color/button_text_color"
         android:text="@string/register"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
