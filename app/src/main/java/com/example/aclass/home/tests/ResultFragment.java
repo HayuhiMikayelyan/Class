@@ -1,24 +1,34 @@
 package com.example.aclass.home.tests;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.aclass.R;
+import com.example.aclass.basic.MainActivity;
 import com.example.aclass.databinding.FragmentResultBinding;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 public class ResultFragment extends Fragment {
 
@@ -45,16 +55,26 @@ public class ResultFragment extends Fragment {
             });
 
             binding.btnBack.setOnClickListener(v -> {
-                DatabaseReference db = FirebaseDatabase.getInstance().getReference("tests")
-                        .child(category).child(String.valueOf(test.getId())).child("progress");
-                db.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        db.setValue(Math.max(progress,snapshot.getValue(Integer.class)));
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {}
+                FirebaseFirestore.getInstance().collection("users").document(Objects.requireNonNull(FirebaseAuth.getInstance().getUid())).addSnapshotListener((value, error) -> {
+                    List<Map<String, Long>> list = (List<Map<String, Long>>) value.get("tests");
+
+                    boolean isChanged = false;
+                    for (int i = 0; i < list.size(); i++) {
+                        if (list.get(i).containsKey(test.getId())) {
+                            long oldProgress = list.get(i).get(test.getId());
+                            Map<String, Long> map = new HashMap<>();
+                            map.put(test.getId(), Math.max(oldProgress, progress));
+                            list.set(i, map);
+                            isChanged = true;
+                        }
+                    }
+                    if (!isChanged){
+                        Map<String, Long> map = new HashMap<>();
+                        map.put(test.getId(), (long) progress);
+                        list.add(map);
+                    }
+                    FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().getUid()).update("tests", list).addOnSuccessListener(unused -> Toast.makeText(requireContext(), list.toString(), Toast.LENGTH_SHORT).show());
                 });
 
                 Bundle bundle = new Bundle();

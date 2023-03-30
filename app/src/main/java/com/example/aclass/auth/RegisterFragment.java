@@ -31,7 +31,6 @@ public class RegisterFragment extends Fragment {
     private FirebaseFirestore store;
 
 
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -57,7 +56,7 @@ public class RegisterFragment extends Fragment {
 
         String emailPattern = "[a-zA-Z\\d._-]+@[a-z]+\\.+[a-z]+";
 
-        if (name.isEmpty()){
+        if (name.isEmpty()) {
             binding.edtName.setError(getString(R.string.wrong_name));
         } else if (!email.matches(emailPattern)) {
             binding.edtName.setError(null);
@@ -82,17 +81,21 @@ public class RegisterFragment extends Fragment {
                     DocumentReference documentReference = store.collection("users").document(Objects.requireNonNull(auth.getCurrentUser()).getUid());
 
                     Map<String, Object> user = new HashMap<>();
-                    user.put("name",name);
-                    user.put("email",email);
+                    Map<String, Integer> test = new HashMap<>();
+                    test.put("",0);
+
+                    user.put("name", name);
+                    user.put("email", email);
                     user.put("isTeacher", finalIsTeacher);
                     user.put("id", auth.getCurrentUser().getUid());
-                    user.put("icon","https://firebasestorage.googleapis.com/v0/b/class-32ca7.appspot.com/o/images%2Fprofile-icon-design-free-vector.png?alt=media&token=f7e05691-e023-4415-a0d0-7dc01b15d69e");
+                    user.put("test", test);
+                    user.put("icon", "https://firebasestorage.googleapis.com/v0/b/class-32ca7.appspot.com/o/images%2Fprofile-icon-design-free-vector.png?alt=media&token=f7e05691-e023-4415-a0d0-7dc01b15d69e");
 
                     documentReference.set(user).addOnSuccessListener(unused -> Toast.makeText(requireContext(), R.string.successful, Toast.LENGTH_LONG).show());
 
-                    auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(task1 -> {
-                        if (task.isSuccessful()){
-                            if (finalIsTeacher){
+                    auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task1 -> {
+                        if (task.isSuccessful()) {
+                            if (finalIsTeacher) {
                                 Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_createClassFragment);
                             } else {
                                 Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_joinToClassFragment);
@@ -106,7 +109,7 @@ public class RegisterFragment extends Fragment {
         }
     }
 
-    private void showProgress(){
+    private void showProgress() {
         progressDialog = new ProgressDialog(requireContext());
         progressDialog.setMessage(getString(R.string.wait));
         progressDialog.setTitle(getString(R.string.registration));
@@ -114,7 +117,7 @@ public class RegisterFragment extends Fragment {
         progressDialog.show();
     }
 
-    private void dismissProgress(){
+    private void dismissProgress() {
         progressDialog.dismiss();
     }
 

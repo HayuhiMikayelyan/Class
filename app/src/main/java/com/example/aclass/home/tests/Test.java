@@ -8,18 +8,17 @@ import androidx.annotation.NonNull;
 import java.util.ArrayList;
 
 public class Test implements Parcelable {
-    private int id;
-    private int progress;
+    private String id;
     private String name;
     private ArrayList<String> rightAnswer;
     private ArrayList<ArrayList<String>> answers;
     private ArrayList<String> questions;
 
-    public Test() {}
+    public Test() {
+    }
 
-    public Test(int id, int progress, String name, ArrayList<String> rightAnswer, ArrayList<ArrayList<String>> answers, ArrayList<String> questions) {
+    public Test(String id, String name, ArrayList<String> rightAnswer, ArrayList<ArrayList<String>> answers, ArrayList<String> questions) {
         this.id = id;
-        this.progress = progress;
         this.name = name;
         this.rightAnswer = rightAnswer;
         this.answers = answers;
@@ -27,8 +26,7 @@ public class Test implements Parcelable {
     }
 
     protected Test(Parcel in) {
-        id = in.readInt();
-        progress = in.readInt();
+        id = in.readString();
         name = in.readString();
         rightAnswer = in.createStringArrayList();
         questions = in.createStringArrayList();
@@ -53,19 +51,14 @@ public class Test implements Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeInt(id);
-        dest.writeInt(progress);
+        dest.writeString(id);
         dest.writeString(name);
         dest.writeStringList(rightAnswer);
         dest.writeStringList(questions);
     }
 
-    public int getId() {
+    public String getId() {
         return id;
-    }
-
-    public int getProgress() {
-        return progress;
     }
 
     public String getName() {
