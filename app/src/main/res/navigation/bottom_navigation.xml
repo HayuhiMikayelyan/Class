@@ -62,8 +62,8 @@
             android:id="@+id/action_resultFragment_to_quizFragment"
             app:destination="@id/quizFragment" />
         <action
-            android:id="@+id/action_resultFragment_to_testsFragment"
-            app:destination="@id/testsFragment" />
+            android:id="@+id/action_resultFragment_to_testCategoriesFragment"
+            app:destination="@id/testCategoriesFragment" />
     </fragment>
     <fragment
         android:id="@+id/createClassFragment2"

@@ -3,8 +3,10 @@ package com.example.aclass.home.tests;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -45,37 +47,45 @@ public class ResultFragment extends Fragment {
                 Navigation.findNavController(v).navigate(R.id.action_resultFragment_to_quizFragment, bundle);
             });
 
-            binding.btnBack.setOnClickListener(v -> {
+            binding.btnBack.setOnClickListener(v -> goBack(v, category, test, progress));
 
-                FirebaseFirestore.getInstance().collection("users").document(Objects.requireNonNull(FirebaseAuth.getInstance().getUid())).addSnapshotListener((value, error) -> {
-                    List<Map<String, Long>> list = (List<Map<String, Long>>) value.get("tests");
-
-                    boolean isChanged = false;
-                    for (int i = 0; i < list.size(); i++) {
-                        if (list.get(i).containsKey(test.getId())) {
-                            long oldProgress = list.get(i).get(test.getId());
-                            Map<String, Long> map = new HashMap<>();
-                            map.put(test.getId(), Math.max(oldProgress, progress));
-                            list.set(i, map);
-                            isChanged = true;
-                        }
-                    }
-                    if (!isChanged) {
-                        Map<String, Long> map = new HashMap<>();
-                        map.put(test.getId(), (long) progress);
-                        list.add(map);
-                    }
-                    FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().getUid()).update("tests", list).addOnSuccessListener(unused -> {
-                    });
-                });
-
-                Bundle bundle = new Bundle();
-                bundle.putString("category", category);
-                Navigation.findNavController(v).navigate(R.id.action_resultFragment_to_testsFragment, bundle);
+            requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), new OnBackPressedCallback(true) {
+                @Override
+                public void handleOnBackPressed() {
+                    goBack(requireView(), category, test, progress);
+                }
             });
         }
 
 
         return binding.getRoot();
     }
+
+    private void goBack(View v, String category, Test test, int progress) {
+        FirebaseFirestore.getInstance().collection("users").document(Objects.requireNonNull(FirebaseAuth.getInstance().getUid())).addSnapshotListener((value, error) -> {
+            List<Map<String, Long>> list = (List<Map<String, Long>>) value.get("tests");
+
+            boolean isChanged = false;
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i).containsKey(test.getId())) {
+                    long oldProgress = list.get(i).get(test.getId());
+                    Map<String, Long> map = new HashMap<>();
+                    map.put(test.getId(), Math.max(oldProgress, progress));
+                    list.set(i, map);
+                    isChanged = true;
+                }
+            }
+            if (!isChanged) {
+                Map<String, Long> map = new HashMap<>();
+                map.put(test.getId(), (long) progress);
+                list.add(map);
+            }
+            FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().getUid()).update("tests", list).addOnSuccessListener(unused -> {
+            });
+        });
+
+        Navigation.findNavController(v).navigate(R.id.action_resultFragment_to_testCategoriesFragment);
+    }
+
+
 }

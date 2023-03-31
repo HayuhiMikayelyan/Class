@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -116,10 +118,16 @@ public class QuizFragment extends Fragment {
                     bundle.putParcelable("test", test);
                     bundle.putString("category", category);
                     bundle.putInt("right", rightAnswers);
-                    Navigation.findNavController(v).navigate(R.id.action_quizFragment_to_resultFragment, bundle);
+                    NavController navController = Navigation.findNavController(v);
+
+                    navController.popBackStack(R.id.quizFragment,false);
+                    navController.navigate(R.id.action_quizFragment_to_resultFragment, bundle);
+
                 }
 
             }
         });
     }
+
+
 }
