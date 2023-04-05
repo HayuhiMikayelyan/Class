@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -23,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-public class ResultFragment extends Fragment {
+public class  ResultFragment extends Fragment {
 
     @SuppressLint("SetTextI18n")
     @Override

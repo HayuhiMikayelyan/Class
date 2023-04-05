@@ -89,7 +89,7 @@ public class RegisterFragment extends Fragment {
                     user.put("isTeacher", finalIsTeacher);
                     user.put("id", auth.getCurrentUser().getUid());
                     user.put("test", test);
-                    user.put("icon", "https://firebasestorage.googleapis.com/v0/b/class-32ca7.appspot.com/o/images%2Fprofile-icon-design-free-vector.png?alt=media&token=f7e05691-e023-4415-a0d0-7dc01b15d69e");
+                    user.put("icon", "https://firebasestorage.googleapis.com/v0/b/class-32ca7.appspot.com/o/images%2Fprofile%20picture.png?alt=media&token=d5f369bc-8d4e-44fa-9f88-11fab1dd0f85");
 
                     documentReference.set(user).addOnSuccessListener(unused -> Toast.makeText(requireContext(), R.string.successful, Toast.LENGTH_LONG).show());
 

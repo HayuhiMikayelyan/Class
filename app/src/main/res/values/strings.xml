@@ -65,5 +65,6 @@
     <string name="my_profile">My Profile</string>
     <string name="change_image">Change Image</string>
     <string name="save_changes">Save changes</string>
+    <string name="forget_password">Forget password?</string>
 
 </resources>
