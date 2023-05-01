@@ -66,5 +66,9 @@
     <string name="change_image">Change Image</string>
     <string name="save_changes">Save changes</string>
     <string name="forget_password">Forget password?</string>
+    <string name="lessons">Lessons</string>
+    <string name="homeworks">Homeworks</string>
+    <string name="log_out">Log out</string>
+    <string name="members">" members"</string>
 
 </resources>

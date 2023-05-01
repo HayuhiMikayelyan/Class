@@ -4,11 +4,13 @@ public class Class {
     private String className;
     private String subject;
     private String id;
+    private int members;
 
-    public Class(String className, String subject, String id) {
+    public Class(String className, String subject, String id, int members) {
         this.className = className;
         this.subject = subject;
         this.id = id;
+        this.members = members;
     }
 
     public String getId() {
@@ -26,16 +28,12 @@ public class Class {
         return className;
     }
 
-    public void setClassName(String className) {
-        this.className = className;
-    }
-
 
     public String getSubject() {
         return subject;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public int getMembers() {
+        return members;
     }
 }

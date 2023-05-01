@@ -16,6 +16,12 @@
         <action
             android:id="@+id/action_classesFragment_to_createClassFragment2"
             app:destination="@id/createClassFragment2" />
+        <action
+            android:id="@+id/action_classesFragment_to_classesDetailFragment"
+            app:destination="@id/classesDetailFragment" />
+        <action
+            android:id="@+id/action_classesFragment_to_classesDetailFragment2"
+            app:destination="@id/classesDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/testCategoriesFragment"
@@ -84,4 +90,9 @@
             android:id="@+id/action_editProfileFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/classesDetailFragment"
+        android:name="com.example.aclass.home.classes.ClassesDetailFragment"
+        android:label="fragment_classes_detail"
+        tools:layout="@layout/fragment_classes_detail" />
 </navigation>

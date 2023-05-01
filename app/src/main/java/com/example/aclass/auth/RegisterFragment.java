@@ -82,8 +82,6 @@ public class RegisterFragment extends Fragment {
 
                     Map<String, Object> user = new HashMap<>();
                     Map<String, Integer> test = new HashMap<>();
-                    test.put("", 0);
-
                     user.put("name", name);
                     user.put("email", email);
                     user.put("isTeacher", finalIsTeacher);

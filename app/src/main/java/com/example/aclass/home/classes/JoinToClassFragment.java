@@ -56,6 +56,7 @@ public class JoinToClassFragment extends Fragment {
                 } else {
                     DocumentReference documentReference1 = firestore.collection("users").document(Objects.requireNonNull(auth.getCurrentUser()).getUid());
                     documentReference1.update("classes", FieldValue.arrayUnion(id));
+                    firestore.collection("classes").document(id).update("members",FieldValue.increment(1));
                     Intent intent = new Intent(getActivity(), MainActivity.class);
                     startActivity(intent);
                     requireActivity().finish();

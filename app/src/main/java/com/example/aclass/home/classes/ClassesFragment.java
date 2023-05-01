@@ -40,7 +40,7 @@ public class ClassesFragment extends Fragment {
 
         binding = FragmentClassesBinding.inflate(inflater, container, false);
 
-        classIds = Collections.singletonList("");
+        classIds = new ArrayList<>();
         classes = new ArrayList<>();
 
         adapter = new ClassesAdapter(classes);
@@ -75,34 +75,33 @@ public class ClassesFragment extends Fragment {
                     if (user.getId().equals(id)) {
                         isTeacher = user.getIsTeacher();
                         classIds = user.getClasses();
-                    }
-                    if (Objects.equals(classIds.get(0), "")) {
-                        binding.tvNoClasses.setVisibility(View.VISIBLE);
-                        binding.imgNoClasses.setVisibility(View.VISIBLE);
-                    } else {
-                        binding.tvNoClasses.setVisibility(View.GONE);
-                        binding.imgNoClasses.setVisibility(View.GONE);
-                        db.collection("classes").addSnapshotListener((value1, error1) -> {
-                            if (value1 != null) {
-                                for (DocumentChange documentChange1 : value1.getDocumentChanges()) {
-                                    Class class1 = documentChange1.getDocument().toObject(Class.class);
-                                    for (String classId : classIds) {
-                                        if (class1.getId().equals(classId)) {
-                                            classes.add(class1);
+
+                        if (classIds.isEmpty()) {
+                            binding.tvNoClasses.setVisibility(View.VISIBLE);
+                            binding.imgNoClasses.setVisibility(View.VISIBLE);
+                        } else {
+                            binding.tvNoClasses.setVisibility(View.GONE);
+                            binding.imgNoClasses.setVisibility(View.GONE);
+                            db.collection("classes").addSnapshotListener((value1, error1) -> {
+                                if (value1 != null) {
+                                    for (DocumentChange change : value1.getDocumentChanges()) {
+                                        Class cl = change.getDocument().toObject(Class.class);
+                                        if (classIds.contains(cl.getId())){
+                                            classes.add(cl);
                                         }
                                     }
+                                    adapter.notifyDataSetChanged();
+                                } else {
+                                    Toast.makeText(requireContext(), getText(R.string.try_again), Toast.LENGTH_SHORT).show();
                                 }
-                                adapter.notifyDataSetChanged();
-                            } else {
-                                Toast.makeText(requireContext(), getText(R.string.try_again), Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                            });
+                        }
+                        break;
                     }
                 }
             } else {
                 Toast.makeText(requireContext(), getText(R.string.try_again), Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 }

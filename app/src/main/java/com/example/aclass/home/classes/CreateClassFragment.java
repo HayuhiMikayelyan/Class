@@ -53,9 +53,10 @@ public class CreateClassFragment extends Fragment {
 
                 DocumentReference documentReference = store.collection("classes").document(id);
 
-                Map<String, String> classes = new HashMap<>();
+                Map<String, Object> classes = new HashMap<>();
                 classes.put("id", id);
                 classes.put("className", className);
+                classes.put("members", 1);
                 classes.put("subject", subject);
 
                 documentReference.set(classes).addOnSuccessListener(unused -> {
