@@ -1,4 +1,4 @@
-package com.example.aclass.home.tests;
+package com.example.aclass.home.tests.tests;
 
 import android.os.Parcel;
 import android.os.Parcelable;

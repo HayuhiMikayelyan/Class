@@ -1,4 +1,4 @@
-package com.example.aclass.home.tests;
+package com.example.aclass.home.tests.tests;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -65,7 +65,7 @@ public class  ResultFragment extends Fragment {
             List<Map<String, Long>> list = (List<Map<String, Long>>) value.get("tests");
 
             boolean isChanged = false;
-            for (int i = 0; i < list.size(); i++) {
+            for (int i = 0; i < Objects.requireNonNull(list).size(); i++) {
                 if (list.get(i).containsKey(test.getId())) {
                     long oldProgress = list.get(i).get(test.getId());
                     Map<String, Long> map = new HashMap<>();

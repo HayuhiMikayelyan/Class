@@ -1,4 +1,4 @@
-package com.example.aclass.home.tests;
+package com.example.aclass.home.tests.tests;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.example.aclass.databinding.FragmentTestsBinding;
 import com.google.firebase.database.DataSnapshot;
@@ -35,6 +37,7 @@ public class TestsFragment extends Fragment {
         FragmentTestsBinding binding = FragmentTestsBinding.inflate(inflater, container, false);
 
         tests = new ArrayList<>();
+
         if (getArguments() != null) {
             categoryS = getArguments().getString("category");
             loadData(getArguments().getString("category"));
@@ -42,11 +45,37 @@ public class TestsFragment extends Fragment {
 
         adapter = new TestsAdapter(tests, categoryS);
         binding.recycler.setAdapter(adapter);
-        binding.recycler.setHasFixedSize(true);
+        binding.recycler.setHasFixedSize(false);
         binding.recycler.setLayoutManager(new LinearLayoutManager(requireContext()));
+
+        binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filter(newText);
+                return true;
+            }
+        });
 
         return binding.getRoot();
     }
+
+    private void filter(String newText) {
+        List<Test> filteredTest = new ArrayList<>();
+
+        for (Test test : tests) {
+            if (test.getName().toLowerCase().contains(newText.toLowerCase())){
+                filteredTest.add(test);
+            }
+        }
+
+        adapter.filterList(filteredTest);
+    }
+
 
     private void loadData(String category) {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("tests").child(category);
@@ -68,7 +97,6 @@ public class TestsFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-
 
     }
 }

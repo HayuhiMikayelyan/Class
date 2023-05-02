@@ -31,7 +31,6 @@ import java.util.UUID;
 public class CreateClassFragment extends Fragment {
 
     private String subject;
-    private CodeAlertDialogBinding alertBinding;
 
 
     @Override
@@ -39,8 +38,6 @@ public class CreateClassFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         FragmentCreateClassBinding binding = FragmentCreateClassBinding.inflate(inflater, container, false);
-        alertBinding = CodeAlertDialogBinding.inflate(inflater, container, false);
-
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 getContext(),
@@ -70,7 +67,6 @@ public class CreateClassFragment extends Fragment {
                     if (auth.getCurrentUser() != null) {
                         DocumentReference documentReference1 = store.collection("users").document(auth.getCurrentUser().getUid());
                         documentReference1.update("classes", FieldValue.arrayUnion(id));
-                        showCode(id);
                     }
                 });
 
@@ -80,19 +76,5 @@ public class CreateClassFragment extends Fragment {
         });
 
         return binding.getRoot();
-    }
-
-    private void showCode(String id) {
-        Dialog dialog = new Dialog(requireContext());
-        dialog.setContentView(alertBinding.getRoot());
-        alertBinding.tvCode.setText(id);
-        dialog.setCanceledOnTouchOutside(false);
-        dialog.show();
-
-        alertBinding.btnClose.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), MainActivity.class);
-            startActivity(intent);
-            requireActivity().finish();
-        });
     }
 }

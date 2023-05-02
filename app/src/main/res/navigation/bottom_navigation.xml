@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/testsFragment"
-        android:name="com.example.aclass.home.tests.TestsFragment"
+        android:name="com.example.aclass.home.tests.tests.TestsFragment"
         android:label="fragment_tests"
         tools:layout="@layout/fragment_tests" >
         <action
@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/quizFragment"
-        android:name="com.example.aclass.home.tests.QuizFragment"
+        android:name="com.example.aclass.home.tests.tests.QuizFragment"
         android:label="fragment_quiz"
         tools:layout="@layout/fragment_quiz" >
         <action
@@ -61,7 +61,7 @@
     </fragment>
     <fragment
         android:id="@+id/resultFragment"
-        android:name="com.example.aclass.home.tests.ResultFragment"
+        android:name="com.example.aclass.home.tests.tests.ResultFragment"
         android:label="fragment_result"
         tools:layout="@layout/fragment_result" >
         <action
@@ -94,5 +94,14 @@
         android:id="@+id/classesDetailFragment"
         android:name="com.example.aclass.home.classes.ClassesDetailFragment"
         android:label="fragment_classes_detail"
-        tools:layout="@layout/fragment_classes_detail" />
+        tools:layout="@layout/fragment_classes_detail" >
+        <action
+            android:id="@+id/action_classesDetailFragment_to_lessonsFragment"
+            app:destination="@id/lessonsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lessonsFragment"
+        android:name="com.example.aclass.home.classes.LessonsFragment"
+        android:label="fragment_lessons"
+        tools:layout="@layout/fragment_lessons" />
 </navigation>

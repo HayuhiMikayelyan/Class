@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.tests.QuizFragment"
+    tools:context=".home.tests.tests.QuizFragment"
     android:background="@color/back_color">
 
 

@@ -1,4 +1,4 @@
-package com.example.aclass.home.tests;
+package com.example.aclass.home.tests.tests;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -15,12 +15,13 @@ import com.example.aclass.databinding.ItemTestBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
 public class TestsAdapter extends RecyclerView.Adapter<TestsAdapter.TestsViewHolder> {
-    private final List<Test> tests;
+    private List<Test> tests;
     private final String category;
 
     static class TestsViewHolder extends RecyclerView.ViewHolder {
@@ -77,5 +78,10 @@ public class TestsAdapter extends RecyclerView.Adapter<TestsAdapter.TestsViewHol
         return tests.size();
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    public void filterList(List<Test> filteredList){
+        tests = filteredList;
+        notifyDataSetChanged();
+    }
 
 }

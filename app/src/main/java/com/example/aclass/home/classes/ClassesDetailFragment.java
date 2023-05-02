@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,7 +31,16 @@ public class ClassesDetailFragment extends Fragment {
         if (getArguments() != null) {
             binding.tvClassName.setText(getArguments().getString("className"));
             binding.tvMembers.setText(getArguments().getInt("members") + getString(R.string.members));
+
+            binding.tvLessons.setOnClickListener(v -> {
+                Bundle bundle = new Bundle();
+                bundle.putString("className",binding.tvClassName.getText().toString());
+                bundle.putInt("members",getArguments().getInt("members"));
+                Navigation.findNavController(v).navigate(R.id.action_classesDetailFragment_to_lessonsFragment,bundle);
+            });
         }
+
+
         return binding.getRoot();
     }
 

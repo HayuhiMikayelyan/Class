@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.tests.TestsFragment"
+    tools:context=".home.tests.tests.TestsFragment"
     android:background="@color/back_color">
 
 
@@ -25,10 +25,22 @@
         android:id="@+id/recycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_tests"
-        tools:listitem="@layout/item_test" />
+        app:layout_constraintTop_toBottomOf="@id/searchView"
+        tools:listitem="@layout/item_test"
+        android:layout_marginTop="16dp"/>
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginHorizontal="16dp"
+        android:searchIcon="@drawable/ic_search"
+        app:layout_constraintTop_toBottomOf="@+id/tv_tests"
+        android:background="@drawable/search_background"
+        android:layout_marginTop="16dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
