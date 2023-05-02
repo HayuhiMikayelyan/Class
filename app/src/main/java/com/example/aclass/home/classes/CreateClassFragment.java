@@ -1,10 +1,12 @@
 package com.example.aclass.home.classes;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleOwner;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.aclass.R;
 import com.example.aclass.basic.MainActivity;
+import com.example.aclass.databinding.CodeAlertDialogBinding;
 import com.example.aclass.databinding.FragmentCreateClassBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -28,12 +31,16 @@ import java.util.UUID;
 public class CreateClassFragment extends Fragment {
 
     private String subject;
+    private CodeAlertDialogBinding alertBinding;
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         FragmentCreateClassBinding binding = FragmentCreateClassBinding.inflate(inflater, container, false);
+        alertBinding = CodeAlertDialogBinding.inflate(inflater, container, false);
+
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 getContext(),
@@ -46,7 +53,7 @@ public class CreateClassFragment extends Fragment {
         binding.btnCreateClass.setOnClickListener(view -> {
             String id = UUID.randomUUID().toString().replace("-", "").substring(0, 8);
             String className = Objects.requireNonNull(binding.edtClassName.getEditText()).getText().toString();
-            if (!className.equals("") && !subject.equals("")) {
+            if (!className.equals("") && subject!=null) {
 
                 FirebaseFirestore store = FirebaseFirestore.getInstance();
                 FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -63,9 +70,7 @@ public class CreateClassFragment extends Fragment {
                     if (auth.getCurrentUser() != null) {
                         DocumentReference documentReference1 = store.collection("users").document(auth.getCurrentUser().getUid());
                         documentReference1.update("classes", FieldValue.arrayUnion(id));
-                        Intent intent = new Intent(getActivity(), MainActivity.class);
-                        startActivity(intent);
-                        requireActivity().finish();
+                        showCode(id);
                     }
                 });
 
@@ -74,7 +79,20 @@ public class CreateClassFragment extends Fragment {
             }
         });
 
-
         return binding.getRoot();
+    }
+
+    private void showCode(String id) {
+        Dialog dialog = new Dialog(requireContext());
+        dialog.setContentView(alertBinding.getRoot());
+        alertBinding.tvCode.setText(id);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
+
+        alertBinding.btnClose.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            startActivity(intent);
+            requireActivity().finish();
+        });
     }
 }

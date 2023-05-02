@@ -70,5 +70,7 @@
     <string name="homeworks">Homeworks</string>
     <string name="log_out">Log out</string>
     <string name="members">" members"</string>
+    <string name="class_code">Class code</string>
+    <string name="close">Close</string>
 
 </resources>

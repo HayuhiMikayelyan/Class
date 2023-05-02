@@ -9,7 +9,7 @@
     android:layout_margin="6dp"
     android:backgroundTint="@color/blue_light">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="16dp"
@@ -23,7 +23,21 @@
             tools:text="Class A"
             android:textColor="@color/blue_dark"
             android:textSize="24sp"
-            android:fontFamily="@font/reef"/>
+            android:fontFamily="@font/reef"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            android:id="@+id/img_code"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:srcCompat="@drawable/ic_password_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteY="16dp" />
+
         <TextView
             android:id="@+id/tv_subtitle"
             android:layout_width="wrap_content"
@@ -31,7 +45,9 @@
             tools:text="History"
             android:textColor="@color/blue_dark"
             android:textSize="18sp"
-            android:fontFamily="@font/reef"/>
-    </LinearLayout>
+            android:fontFamily="@font/reef"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_Title"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

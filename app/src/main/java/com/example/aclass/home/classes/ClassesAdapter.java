@@ -1,9 +1,12 @@
 package com.example.aclass.home.classes;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -11,6 +14,8 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aclass.R;
+import com.example.aclass.basic.MainActivity;
+import com.example.aclass.databinding.CodeAlertDialogBinding;
 import com.example.aclass.databinding.ItemClassBinding;
 
 import java.util.List;
@@ -50,11 +55,23 @@ public class ClassesAdapter extends RecyclerView.Adapter<ClassesAdapter.ClassesV
             bundle.putInt("members", classes.get(position).getMembers());
             Navigation.findNavController(v).navigate(R.id.action_classesFragment_to_classesDetailFragment,bundle);
         });
+
+        holder.binding.imgCode.setOnClickListener(v -> showCode(classes.get(position).getId(),holder.itemView.getContext()));
     }
 
     @Override
     public int getItemCount() {
         return classes.size();
+    }
+
+    private void showCode(String id, Context context) {
+        Dialog dialog = new Dialog(context);
+        dialog.setContentView(R.layout.code_alert_dialog);
+        TextView tv = dialog.findViewById(R.id.tv_code);
+        tv.setText(id);
+        dialog.show();
+
+        dialog.findViewById(R.id.btn_close).setOnClickListener(v->dialog.dismiss());
     }
 
 }
