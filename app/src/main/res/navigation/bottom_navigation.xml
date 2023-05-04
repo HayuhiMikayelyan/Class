@@ -49,6 +49,9 @@
         <action
             android:id="@+id/action_testsFragment_to_quizFragment"
             app:destination="@id/quizFragment" />
+        <action
+            android:id="@+id/action_testsFragment_to_addTestFragment"
+            app:destination="@id/addTestFragment" />
     </fragment>
     <fragment
         android:id="@+id/quizFragment"
@@ -104,4 +107,22 @@
         android:name="com.example.aclass.home.classes.LessonsFragment"
         android:label="fragment_lessons"
         tools:layout="@layout/fragment_lessons" />
+    <fragment
+        android:id="@+id/addTestFragment"
+        android:name="com.example.aclass.home.tests.tests.AddTestFragment"
+        android:label="fragment_add_test"
+        tools:layout="@layout/fragment_add_test" >
+        <action
+            android:id="@+id/action_addTestFragment_to_questionsFragment"
+            app:destination="@id/questionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionsFragment"
+        android:name="com.example.aclass.home.tests.tests.AddQuestionsFragment"
+        android:label="fragment_questions"
+        tools:layout="@layout/fragment_questions" >
+        <action
+            android:id="@+id/action_questionsFragment_to_testsFragment"
+            app:destination="@id/testsFragment" />
+    </fragment>
 </navigation>

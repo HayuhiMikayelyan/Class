@@ -2,17 +2,17 @@ package com.example.aclass.home.tests.tests;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
-import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
+import com.example.aclass.R;
 import com.example.aclass.databinding.FragmentTestsBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -61,6 +61,12 @@ public class TestsFragment extends Fragment {
             }
         });
 
+        binding.btnAddTest.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            bundle.putString("category", categoryS);
+            Navigation.findNavController(v).navigate(R.id.action_testsFragment_to_addTestFragment, bundle);
+        });
+
         return binding.getRoot();
     }
 
@@ -68,7 +74,7 @@ public class TestsFragment extends Fragment {
         List<Test> filteredTest = new ArrayList<>();
 
         for (Test test : tests) {
-            if (test.getName().toLowerCase().contains(newText.toLowerCase())){
+            if (test.getName().toLowerCase().contains(newText.toLowerCase())) {
                 filteredTest.add(test);
             }
         }

@@ -76,4 +76,16 @@ public class Test implements Parcelable {
     public ArrayList<String> getQuestions() {
         return questions;
     }
+
+    public void addRightAnswer(String rightAnswer) {
+        this.rightAnswer.add(rightAnswer);
+    }
+
+    public void addAnswers(ArrayList<String> variants) {
+        answers.add(variants);
+    }
+
+    public void addQuestion(String question) {
+        questions.add(question);
+    }
 }

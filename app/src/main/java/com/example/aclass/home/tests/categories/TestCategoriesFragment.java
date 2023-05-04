@@ -18,6 +18,8 @@ import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -53,6 +55,7 @@ public class TestCategoriesFragment extends Fragment {
                 for (DocumentChange documentChange : value.getDocumentChanges()) {
                     categoryList.add(documentChange.getDocument().toObject(Category.class));
                 }
+                categoryList.sort(Comparator.comparingInt(Category::getId));
                 adapter.notifyDataSetChanged();
             } else {
                 Toast.makeText(requireContext(), getString(R.string.try_again), Toast.LENGTH_SHORT).show();
