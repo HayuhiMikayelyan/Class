@@ -11,16 +11,13 @@
         android:label="fragment_classes"
         tools:layout="@layout/fragment_classes" >
         <action
-            android:id="@+id/action_classesFragment_to_joinToClassFragment2"
-            app:destination="@id/joinToClassFragment2" />
+            android:id="@+id/action_classesFragment_to_joinToClassFragment"
+            app:destination="@id/joinToClassFragment" />
         <action
-            android:id="@+id/action_classesFragment_to_createClassFragment2"
-            app:destination="@id/createClassFragment2" />
+            android:id="@+id/action_classesFragment_to_createClassFragment"
+            app:destination="@id/createClassFragment" />
         <action
             android:id="@+id/action_classesFragment_to_classesDetailFragment"
-            app:destination="@id/classesDetailFragment" />
-        <action
-            android:id="@+id/action_classesFragment_to_classesDetailFragment2"
             app:destination="@id/classesDetailFragment" />
     </fragment>
     <fragment
@@ -75,15 +72,23 @@
             app:destination="@id/testCategoriesFragment" />
     </fragment>
     <fragment
-        android:id="@+id/createClassFragment2"
+        android:id="@+id/createClassFragment"
         android:name="com.example.aclass.home.classes.CreateClassFragment"
         android:label="fragment_create_class"
-        tools:layout="@layout/fragment_create_class" />
+        tools:layout="@layout/fragment_create_class" >
+        <action
+            android:id="@+id/action_createClassFragment_to_classesFragment"
+            app:destination="@id/classesFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/joinToClassFragment2"
+        android:id="@+id/joinToClassFragment"
         android:name="com.example.aclass.home.classes.JoinToClassFragment"
         android:label="fragment_join_to_class"
-        tools:layout="@layout/fragment_join_to_class" />
+        tools:layout="@layout/fragment_join_to_class" >
+        <action
+            android:id="@+id/action_joinToClassFragment_to_classesFragment"
+            app:destination="@id/classesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
         android:name="com.example.aclass.home.profile.EditProfileFragment"
@@ -101,6 +106,9 @@
         <action
             android:id="@+id/action_classesDetailFragment_to_lessonsFragment"
             app:destination="@id/lessonsFragment" />
+        <action
+            android:id="@+id/action_classesDetailFragment_to_classMembersFragment"
+            app:destination="@id/classMembersFragment" />
     </fragment>
     <fragment
         android:id="@+id/lessonsFragment"
@@ -125,4 +133,9 @@
             android:id="@+id/action_questionsFragment_to_testsFragment"
             app:destination="@id/testsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/classMembersFragment"
+        android:name="com.example.aclass.home.classes.ClassMembersFragment"
+        android:label="fragment_class_members"
+        tools:layout="@layout/fragment_class_members" />
 </navigation>

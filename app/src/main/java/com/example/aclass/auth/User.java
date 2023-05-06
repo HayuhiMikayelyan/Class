@@ -37,16 +37,8 @@ public class User {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public Boolean getIsTeacher() {
         return isTeacher;
-    }
-
-    public void setIsTeacher(Boolean teacher) {
-        isTeacher = teacher;
     }
 
     public String getName() {
@@ -67,10 +59,6 @@ public class User {
 
     public String getIcon() {
         return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon;
     }
 
     public List<Map<String, Integer>> getTests() {

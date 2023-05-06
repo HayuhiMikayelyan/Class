@@ -3,14 +3,13 @@ package com.example.aclass.home.classes;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.example.aclass.R;
 import com.example.aclass.basic.MainActivity;
@@ -56,7 +55,8 @@ public class JoinToClassFragment extends Fragment {
                 } else {
                     DocumentReference documentReference1 = firestore.collection("users").document(Objects.requireNonNull(auth.getCurrentUser()).getUid());
                     documentReference1.update("classes", FieldValue.arrayUnion(id));
-                    firestore.collection("classes").document(id).update("members",FieldValue.increment(1));
+                    firestore.collection("classes").document(id).update("membersCount", FieldValue.increment(1));
+                    firestore.collection("classes").document(id).update("members", FieldValue.arrayUnion(auth.getCurrentUser().getUid()));
                     Intent intent = new Intent(getActivity(), MainActivity.class);
                     startActivity(intent);
                     requireActivity().finish();

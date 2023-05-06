@@ -1,25 +1,20 @@
 package com.example.aclass.home.classes;
 
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.aclass.R;
 import com.example.aclass.databinding.CodeAlertDialogBinding;
 import com.example.aclass.databinding.FragmentClassesDetailBinding;
 
 public class ClassesDetailFragment extends Fragment {
-
-    private CodeAlertDialogBinding alertBinding;
-
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -34,9 +29,15 @@ public class ClassesDetailFragment extends Fragment {
 
             binding.tvLessons.setOnClickListener(v -> {
                 Bundle bundle = new Bundle();
-                bundle.putString("className",binding.tvClassName.getText().toString());
-                bundle.putInt("members",getArguments().getInt("members"));
-                Navigation.findNavController(v).navigate(R.id.action_classesDetailFragment_to_lessonsFragment,bundle);
+                bundle.putString("className", binding.tvClassName.getText().toString());
+                Navigation.findNavController(v).navigate(R.id.action_classesDetailFragment_to_lessonsFragment, bundle);
+            });
+
+            binding.tvMembers.setOnClickListener(v -> {
+                Bundle bundle = new Bundle();
+                bundle.putString("className", binding.tvClassName.getText().toString());
+                bundle.putString("id",getArguments().getString("id"));
+                Navigation.findNavController(v).navigate(R.id.action_classesDetailFragment_to_classMembersFragment,bundle);
             });
         }
 

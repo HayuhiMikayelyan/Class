@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.aclass.R;
 import com.example.aclass.databinding.FragmentLessonsBinding;
 
 public class LessonsFragment extends Fragment {
@@ -25,7 +24,6 @@ public class LessonsFragment extends Fragment {
 
         if (getArguments() != null) {
             binding.tvClassName.setText(getArguments().getString("className"));
-            binding.tvMembers.setText(getArguments().getInt("members") + getString(R.string.members));
         }
 
         return binding.getRoot();

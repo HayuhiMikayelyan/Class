@@ -23,7 +23,6 @@ import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -51,9 +50,9 @@ public class ClassesFragment extends Fragment {
 
         binding.btnAddClass.setOnClickListener(v -> {
             if (!isTeacher) {
-                Navigation.findNavController(v).navigate(R.id.action_classesFragment_to_joinToClassFragment2);
+                Navigation.findNavController(v).navigate(R.id.action_classesFragment_to_joinToClassFragment);
             } else {
-                Navigation.findNavController(v).navigate(R.id.action_classesFragment_to_createClassFragment2);
+                Navigation.findNavController(v).navigate(R.id.action_classesFragment_to_createClassFragment);
             }
         });
 
@@ -96,7 +95,6 @@ public class ClassesFragment extends Fragment {
                                 }
                             });
                         }
-                        break;
                     }
                 }
             } else {

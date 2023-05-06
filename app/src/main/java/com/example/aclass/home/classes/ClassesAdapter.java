@@ -4,18 +4,14 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aclass.R;
-import com.example.aclass.basic.MainActivity;
-import com.example.aclass.databinding.CodeAlertDialogBinding;
 import com.example.aclass.databinding.ItemClassBinding;
 
 import java.util.List;
@@ -51,8 +47,9 @@ public class ClassesAdapter extends RecyclerView.Adapter<ClassesAdapter.ClassesV
 
         holder.itemView.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
+            bundle.putString("id",classes.get(position).getId());
             bundle.putString("className", classes.get(position).getClassName());
-            bundle.putInt("members", classes.get(position).getMembers());
+            bundle.putInt("members", classes.get(position).getMembersCount());
             Navigation.findNavController(v).navigate(R.id.action_classesFragment_to_classesDetailFragment,bundle);
         });
 

@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.example.aclass.R;
 import com.example.aclass.auth.User;
-import com.example.aclass.basic.MainActivity;
 import com.example.aclass.basic.StartActivity;
 import com.example.aclass.databinding.FragmentProfileBinding;
 import com.google.firebase.auth.FirebaseAuth;
