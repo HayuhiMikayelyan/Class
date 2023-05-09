@@ -86,5 +86,10 @@
     <string name="b">B</string>
     <string name="c">C</string>
     <string name="d">D</string>
+    <string name="no_lessons">You don\'t have lessons yet!</string>
+    <string name="add_a_new_lesson">Add a new lesson</string>
+    <string name="add_a_lesson">Add a lesson</string>
+    <string name="description">Description</string>
+    <string name="title">Title</string>
 
 </resources>

@@ -17,8 +17,8 @@
             android:id="@+id/action_classesFragment_to_createClassFragment"
             app:destination="@id/createClassFragment" />
         <action
-            android:id="@+id/action_classesFragment_to_classesDetailFragment"
-            app:destination="@id/classesDetailFragment" />
+            android:id="@+id/action_classesFragment_to_lessonsFragment"
+            app:destination="@id/lessonsFragment" />
     </fragment>
     <fragment
         android:id="@+id/testCategoriesFragment"
@@ -99,22 +99,17 @@
             app:destination="@id/profileFragment" />
     </fragment>
     <fragment
-        android:id="@+id/classesDetailFragment"
-        android:name="com.example.aclass.home.classes.ClassesDetailFragment"
-        android:label="fragment_classes_detail"
-        tools:layout="@layout/fragment_classes_detail" >
-        <action
-            android:id="@+id/action_classesDetailFragment_to_lessonsFragment"
-            app:destination="@id/lessonsFragment" />
-        <action
-            android:id="@+id/action_classesDetailFragment_to_classMembersFragment"
-            app:destination="@id/classMembersFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/lessonsFragment"
         android:name="com.example.aclass.home.classes.LessonsFragment"
         android:label="fragment_lessons"
-        tools:layout="@layout/fragment_lessons" />
+        tools:layout="@layout/fragment_lessons" >
+        <action
+            android:id="@+id/action_lessonsFragment_to_addLessonFragment"
+            app:destination="@id/addLessonFragment" />
+        <action
+            android:id="@+id/action_lessonsFragment_to_classMembersFragment"
+            app:destination="@id/classMembersFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addTestFragment"
         android:name="com.example.aclass.home.tests.tests.AddTestFragment"
@@ -138,4 +133,13 @@
         android:name="com.example.aclass.home.classes.ClassMembersFragment"
         android:label="fragment_class_members"
         tools:layout="@layout/fragment_class_members" />
+    <fragment
+        android:id="@+id/addLessonFragment"
+        android:name="com.example.aclass.home.classes.AddLessonFragment"
+        android:label="fragment_add_lesson"
+        tools:layout="@layout/fragment_add_lesson" >
+        <action
+            android:id="@+id/action_addLessonFragment_to_lessonsFragment"
+            app:destination="@id/lessonsFragment" />
+    </fragment>
 </navigation>

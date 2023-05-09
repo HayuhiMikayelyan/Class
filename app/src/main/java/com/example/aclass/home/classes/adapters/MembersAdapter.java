@@ -1,4 +1,4 @@
-package com.example.aclass.home.classes;
+package com.example.aclass.home.classes.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;

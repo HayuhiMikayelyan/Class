@@ -1,4 +1,4 @@
-package com.example.aclass.home.classes;
+package com.example.aclass.home.classes.adapters;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aclass.R;
 import com.example.aclass.databinding.ItemClassBinding;
+import com.example.aclass.home.classes.models.Class;
 
 import java.util.List;
 
@@ -47,10 +48,8 @@ public class ClassesAdapter extends RecyclerView.Adapter<ClassesAdapter.ClassesV
 
         holder.itemView.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
-            bundle.putString("id",classes.get(position).getId());
-            bundle.putString("className", classes.get(position).getClassName());
-            bundle.putInt("members", classes.get(position).getMembersCount());
-            Navigation.findNavController(v).navigate(R.id.action_classesFragment_to_classesDetailFragment,bundle);
+            bundle.putParcelable("class",classes.get(position));
+            Navigation.findNavController(v).navigate(R.id.action_classesFragment_to_lessonsFragment,bundle);
         });
 
         holder.binding.imgCode.setOnClickListener(v -> showCode(classes.get(position).getId(),holder.itemView.getContext()));

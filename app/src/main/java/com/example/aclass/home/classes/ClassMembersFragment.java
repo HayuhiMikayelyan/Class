@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.aclass.auth.User;
 import com.example.aclass.databinding.FragmentClassMembersBinding;
+import com.example.aclass.home.classes.adapters.MembersAdapter;
+import com.example.aclass.home.classes.models.Class;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -35,11 +37,10 @@ public class ClassMembersFragment extends Fragment {
             binding.recycler.setLayoutManager(new LinearLayoutManager(requireContext()));
             binding.recycler.setAdapter(adapter);
 
-            binding.tvClassName.setText(getArguments().getString("className"));
-            String id = getArguments().getString("id");
+            Class aClass = getArguments().getParcelable("class");
+            binding.tvClassName.setText(aClass.getClassName());
 
-
-            DocumentReference document = FirebaseFirestore.getInstance().collection("classes").document(id);
+            DocumentReference document = FirebaseFirestore.getInstance().collection("classes").document(aClass.getId());
             document.addSnapshotListener((value, error) -> {
                 if (value != null) {
                     Class cl = value.toObject(Class.class);

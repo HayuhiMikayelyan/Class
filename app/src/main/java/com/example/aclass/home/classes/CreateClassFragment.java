@@ -13,6 +13,7 @@ import androidx.navigation.Navigation;
 
 import com.example.aclass.R;
 import com.example.aclass.databinding.FragmentCreateClassBinding;
+import com.example.aclass.home.classes.models.Lesson;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
@@ -63,6 +64,7 @@ public class CreateClassFragment extends Fragment {
                 classes.put("membersCount", 1);
                 classes.put("members", members);
                 classes.put("subject", subject);
+                classes.put("lessons", new ArrayList<Lesson>());
 
                 documentReference.set(classes).addOnSuccessListener(unused -> {
                     if (auth.getCurrentUser() != null) {
