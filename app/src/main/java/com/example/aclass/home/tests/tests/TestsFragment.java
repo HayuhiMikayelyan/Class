@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.aclass.R;
 import com.example.aclass.databinding.FragmentTestsBinding;
+import com.example.aclass.home.classes.models.Class;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,7 +44,10 @@ public class TestsFragment extends Fragment {
             loadData(getArguments().getString("category"));
         }
 
-        adapter = new TestsAdapter(tests, categoryS);
+        Class aClass = getArguments().getParcelable("class");
+        ArrayList<Test> lessonTests = (ArrayList<Test>) getArguments().getSerializable("tests");
+
+        adapter = new TestsAdapter(tests, categoryS, aClass,getArguments().getString("title"),getArguments().getString("description"),lessonTests);
         binding.recycler.setAdapter(adapter);
         binding.recycler.setHasFixedSize(false);
         binding.recycler.setLayoutManager(new LinearLayoutManager(requireContext()));

@@ -46,21 +46,34 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:hint="@string/description"
         app:boxStrokeColor="@color/text_color"
         app:hintTextColor="@color/text_color"
-        app:layout_constraintStart_toStartOf="@id/edt_title"
         app:layout_constraintEnd_toEndOf="@id/edt_title"
-        app:layout_constraintTop_toBottomOf="@id/edt_title"
-        android:layout_marginTop="8dp">
+        app:layout_constraintStart_toStartOf="@id/edt_title"
+        app:layout_constraintTop_toBottomOf="@id/edt_title">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"/>
+            android:inputType="text" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <Button
+        android:id="@+id/btn_add_test_to_lesson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/reef"
+        android:text="@string/add_test"
+        android:textAllCaps="false"
+        android:textColor="@color/button_text_color"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@id/edt_description"
+        app:layout_constraintStart_toStartOf="@id/edt_description"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        android:layout_marginTop="18dp"/>
 
     <Button
         android:id="@+id/btn_add_lesson"
@@ -68,12 +81,22 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/edt_description"
         app:layout_constraintEnd_toEndOf="@id/edt_description"
-        app:layout_constraintTop_toBottomOf="@id/edt_description"
+        app:layout_constraintTop_toBottomOf="@id/btn_add_test_to_lesson"
         android:layout_marginTop="18dp"
         android:textAllCaps="false"
         android:textSize="18sp"
         android:fontFamily="@font/reef"
         android:textColor="@color/button_text_color"
         android:text="@string/add_a_lesson"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@+id/edt_description"
+        app:layout_constraintStart_toStartOf="@+id/edt_description"
+        app:layout_constraintTop_toBottomOf="@+id/edt_description" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

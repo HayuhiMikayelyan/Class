@@ -49,6 +49,9 @@
         <action
             android:id="@+id/action_testsFragment_to_addTestFragment"
             app:destination="@id/addTestFragment" />
+        <action
+            android:id="@+id/action_testsFragment_to_addLessonFragment"
+            app:destination="@id/addLessonFragment" />
     </fragment>
     <fragment
         android:id="@+id/quizFragment"
@@ -141,5 +144,8 @@
         <action
             android:id="@+id/action_addLessonFragment_to_lessonsFragment"
             app:destination="@id/lessonsFragment" />
+        <action
+            android:id="@+id/action_addLessonFragment_to_testsFragment"
+            app:destination="@id/testsFragment" />
     </fragment>
 </navigation>

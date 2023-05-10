@@ -2,6 +2,7 @@ package com.example.aclass.home.tests.tests;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.aclass.R;
 import com.example.aclass.auth.User;
 import com.example.aclass.databinding.ItemTestBinding;
+import com.example.aclass.home.classes.models.Class;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -23,6 +25,11 @@ import java.util.Objects;
 public class TestsAdapter extends RecyclerView.Adapter<TestsAdapter.TestsViewHolder> {
     private List<Test> tests;
     private final String category;
+    private final Class aClass;
+    private final String title;
+    private final String description;
+    private final ArrayList<Test> lessonTests;
+
 
     static class TestsViewHolder extends RecyclerView.ViewHolder {
 
@@ -34,9 +41,13 @@ public class TestsAdapter extends RecyclerView.Adapter<TestsAdapter.TestsViewHol
         }
     }
 
-    public TestsAdapter(List<Test> tests, String category) {
+    public TestsAdapter(List<Test> tests, String category, Class aClass, String title, String description, ArrayList<Test> lessonTests) {
         this.tests = tests;
         this.category = category;
+        this.aClass = aClass;
+        this.description = description;
+        this.title = title;
+        this.lessonTests = lessonTests;
     }
 
     @NonNull
@@ -67,9 +78,21 @@ public class TestsAdapter extends RecyclerView.Adapter<TestsAdapter.TestsViewHol
         });
         holder.itemView.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
-            bundle.putParcelable("test", tests.get(position));
-            bundle.putString("category", category);
-            Navigation.findNavController(v).navigate(R.id.action_testsFragment_to_quizFragment, bundle);
+            if (aClass == null) {
+                bundle.putParcelable("test", tests.get(position));
+                bundle.putString("category", category);
+                Navigation.findNavController(v).navigate(R.id.action_testsFragment_to_quizFragment, bundle);
+            } else {
+                bundle.putParcelable("class", aClass);
+                bundle.putString("title", title);
+                bundle.putString("description", description);
+                bundle.putParcelable("test", tests.get(position));
+                if (!lessonTests.contains(tests.get(position))){
+                    lessonTests.add(tests.get(position));
+                }
+                bundle.putSerializable("tests", lessonTests);
+                Navigation.findNavController(v).navigate(R.id.action_testsFragment_to_addLessonFragment, bundle);
+            }
         });
     }
 
@@ -79,7 +102,7 @@ public class TestsAdapter extends RecyclerView.Adapter<TestsAdapter.TestsViewHol
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void filterList(List<Test> filteredList){
+    public void filterList(List<Test> filteredList) {
         tests = filteredList;
         notifyDataSetChanged();
     }

@@ -1,12 +1,16 @@
 package com.example.aclass.home.classes.models;
 
+import java.util.ArrayList;
+
 public class Lesson {
     private String title;
     private String description;
+    private ArrayList<String> tests;
 
-    public Lesson(String title, String description) {
+    public Lesson(String title, String description, ArrayList<String> tests) {
         this.title = title;
         this.description = description;
+        this.tests = tests;
     }
 
     public Lesson() {}
@@ -17,5 +21,9 @@ public class Lesson {
 
     public String getDescription() {
         return description;
+    }
+
+    public ArrayList<String> getTests() {
+        return tests;
     }
 }

@@ -4,8 +4,10 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Test implements Parcelable {
     private String id;
@@ -87,5 +89,12 @@ public class Test implements Parcelable {
 
     public void addQuestion(String question) {
         questions.add(question);
+    }
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        Test test = (Test) obj;
+        return id.equals(Objects.requireNonNull(test).id);
+
     }
 }
