@@ -1,4 +1,4 @@
-package com.example.aclass.home.classes;
+package com.example.aclass.home.classes.lessons;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -76,7 +76,7 @@ public class AddLessonFragment extends Fragment {
 
                 if (!title.equals("") && !description.equals("")) {
                     FirebaseFirestore.getInstance().collection("classes").document(aClass.getId()).
-                            update("lessons", FieldValue.arrayUnion(new Lesson(title, description,ids)));
+                            update("lessons", FieldValue.arrayUnion(new Lesson(title, description, ids)));
 
                     Bundle bundle = new Bundle();
                     bundle.putParcelable("class", aClass);

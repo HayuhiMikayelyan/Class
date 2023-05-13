@@ -1,4 +1,4 @@
-package com.example.aclass.home.classes;
+package com.example.aclass.home.classes.classes;
 
 import android.app.ProgressDialog;
 import android.content.Intent;

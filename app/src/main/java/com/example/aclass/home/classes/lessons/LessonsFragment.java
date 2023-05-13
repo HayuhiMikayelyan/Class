@@ -1,4 +1,4 @@
-package com.example.aclass.home.classes;
+package com.example.aclass.home.classes.lessons;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -55,7 +55,7 @@ public class LessonsFragment extends Fragment {
                         }
                     });
                 } else {
-                    LessonAdapter adapter = new LessonAdapter(lessons);
+                    LessonAdapter adapter = new LessonAdapter(lessons,aClass.getSubject());
                     binding.recycler.setLayoutManager(new LinearLayoutManager(getContext()));
                     binding.recycler.setHasFixedSize(true);
                     binding.recycler.setAdapter(adapter);

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/classesFragment"
-        android:name="com.example.aclass.home.classes.ClassesFragment"
+        android:name="com.example.aclass.home.classes.classes.ClassesFragment"
         android:label="fragment_classes"
         tools:layout="@layout/fragment_classes" >
         <action
@@ -76,7 +76,7 @@
     </fragment>
     <fragment
         android:id="@+id/createClassFragment"
-        android:name="com.example.aclass.home.classes.CreateClassFragment"
+        android:name="com.example.aclass.home.classes.classes.CreateClassFragment"
         android:label="fragment_create_class"
         tools:layout="@layout/fragment_create_class" >
         <action
@@ -85,7 +85,7 @@
     </fragment>
     <fragment
         android:id="@+id/joinToClassFragment"
-        android:name="com.example.aclass.home.classes.JoinToClassFragment"
+        android:name="com.example.aclass.home.classes.classes.JoinToClassFragment"
         android:label="fragment_join_to_class"
         tools:layout="@layout/fragment_join_to_class" >
         <action
@@ -103,7 +103,7 @@
     </fragment>
     <fragment
         android:id="@+id/lessonsFragment"
-        android:name="com.example.aclass.home.classes.LessonsFragment"
+        android:name="com.example.aclass.home.classes.lessons.LessonsFragment"
         android:label="fragment_lessons"
         tools:layout="@layout/fragment_lessons" >
         <action
@@ -112,6 +112,9 @@
         <action
             android:id="@+id/action_lessonsFragment_to_classMembersFragment"
             app:destination="@id/classMembersFragment" />
+        <action
+            android:id="@+id/action_lessonsFragment_to_lessonsDetailFragment"
+            app:destination="@id/lessonsDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/addTestFragment"
@@ -133,12 +136,12 @@
     </fragment>
     <fragment
         android:id="@+id/classMembersFragment"
-        android:name="com.example.aclass.home.classes.ClassMembersFragment"
+        android:name="com.example.aclass.home.classes.classes.ClassMembersFragment"
         android:label="fragment_class_members"
         tools:layout="@layout/fragment_class_members" />
     <fragment
         android:id="@+id/addLessonFragment"
-        android:name="com.example.aclass.home.classes.AddLessonFragment"
+        android:name="com.example.aclass.home.classes.lessons.AddLessonFragment"
         android:label="fragment_add_lesson"
         tools:layout="@layout/fragment_add_lesson" >
         <action
@@ -147,5 +150,14 @@
         <action
             android:id="@+id/action_addLessonFragment_to_testsFragment"
             app:destination="@id/testsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lessonsDetailFragment"
+        android:name="com.example.aclass.home.classes.lessons.LessonsDetailFragment"
+        android:label="fragment_lessons_detail"
+        tools:layout="@layout/fragment_lessons_detail" >
+        <action
+            android:id="@+id/action_lessonsDetailFragment_to_quizFragment"
+            app:destination="@id/quizFragment" />
     </fragment>
 </navigation>

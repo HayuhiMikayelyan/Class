@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.classes.ClassMembersFragment"
+    tools:context=".home.classes.classes.ClassMembersFragment"
     android:background="@color/back_color">
 
     <TextView

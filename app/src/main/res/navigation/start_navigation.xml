@@ -63,12 +63,12 @@
         tools:layout="@layout/fragment_sign_in"/>
     <fragment
         android:id="@+id/createClassFragment"
-        android:name="com.example.aclass.home.classes.CreateClassFragment"
+        android:name="com.example.aclass.home.classes.classes.CreateClassFragment"
         android:label="fragment_create_class"
         tools:layout="@layout/fragment_create_class" />
     <fragment
         android:id="@+id/joinToClassFragment"
-        android:name="com.example.aclass.home.classes.JoinToClassFragment"
+        android:name="com.example.aclass.home.classes.classes.JoinToClassFragment"
         android:label="fragment_join_to_class"
         tools:layout="@layout/fragment_join_to_class" />
 </navigation>
