@@ -10,11 +10,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.example.aclass.R;
 import com.example.aclass.databinding.FragmentAddLessonBinding;
+import com.example.aclass.databinding.TestCardBinding;
 import com.example.aclass.home.classes.models.Class;
 import com.example.aclass.home.classes.models.Lesson;
 import com.example.aclass.home.tests.tests.Test;
@@ -45,13 +47,10 @@ public class AddLessonFragment extends Fragment {
             if (getArguments().getSerializable("tests") != null) {
                 tests = (ArrayList<Test>) getArguments().getSerializable("tests");
                 for (Test test1 : tests) {
-                    TextView textView = new TextView(requireContext());
-                    textView.setText(test1.getName());
-                    textView.setTextSize(22);
-                    textView.setTextColor(getResources().getColor(R.color.text_color));
-                    textView.setTypeface(getResources().getFont(R.font.reef));
+                    TestCardBinding cardBinding = TestCardBinding.inflate(inflater, binding.linearLayout, false);
+                    cardBinding.tvTest.setText(test1.getName());
 
-                    binding.linearLayout.addView(textView);
+                    binding.linearLayout.addView(cardBinding.getRoot());
                 }
             }
 

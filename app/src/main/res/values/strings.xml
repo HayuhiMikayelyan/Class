@@ -91,6 +91,7 @@
     <string name="add_a_lesson">Add a lesson</string>
     <string name="description">Description</string>
     <string name="title">Title</string>
+    <string name="save">Save</string>
 
 
 </resources>
