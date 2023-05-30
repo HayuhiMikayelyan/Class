@@ -92,6 +92,12 @@
     <string name="description">Description</string>
     <string name="title">Title</string>
     <string name="save">Save</string>
+    <string name="edit_class">Edit class</string>
+    <string name="teacher_delete_class">Are you sure you want to delete this class? This class will be deleted for all class members.</string>
+    <string name="student_delete_class">Are you sure you want to leave this class?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="delete">Delete</string>
 
 
 </resources>

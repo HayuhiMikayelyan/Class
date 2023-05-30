@@ -5,8 +5,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import org.jetbrains.annotations.Contract;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Class implements Parcelable {
     private String className;
@@ -15,6 +19,8 @@ public class Class implements Parcelable {
     private int membersCount;
     private ArrayList<String> members;
     private ArrayList<Lesson> lessons;
+    @Nullable
+    private Object obj;
 
     public Class(String className, String subject, String id, int membersCount, ArrayList<String> members, ArrayList<Lesson> lessons) {
         this.className = className;
@@ -90,5 +96,11 @@ public class Class implements Parcelable {
         dest.writeString(id);
         dest.writeInt(membersCount);
         dest.writeStringList(members);
+    }
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        Class class1 = (Class) obj;
+        return Objects.requireNonNull(class1).id.equals(id);
     }
 }

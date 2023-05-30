@@ -44,7 +44,7 @@ public class ClassesFragment extends Fragment {
         classIds = new ArrayList<>();
         classes = new ArrayList<>();
 
-        adapter = new ClassesAdapter(classes);
+        adapter = new ClassesAdapter(classes, requireContext());
 
         binding.recycler.setHasFixedSize(true);
         binding.recycler.setLayoutManager(new LinearLayoutManager(requireContext()));
@@ -65,6 +65,7 @@ public class ClassesFragment extends Fragment {
 
     @SuppressLint("NotifyDataSetChanged")
     private void getClasses() {
+
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseAuth auth = FirebaseAuth.getInstance();
         String id = Objects.requireNonNull(auth.getCurrentUser()).getUid();
@@ -87,7 +88,7 @@ public class ClassesFragment extends Fragment {
                                 if (value1 != null) {
                                     for (DocumentChange change : value1.getDocumentChanges()) {
                                         Class cl = change.getDocument().toObject(Class.class);
-                                        if (classIds.contains(cl.getId())){
+                                        if (classIds.contains(cl.getId()) && !classes.contains(cl)){
                                             classes.add(cl);
                                         }
                                     }
