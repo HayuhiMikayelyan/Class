@@ -45,9 +45,6 @@
         android:name="com.example.aclass.auth.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register">
-        <action
-            android:id="@+id/action_registerFragment_to_createClassFragment"
-            app:destination="@id/createClassFragment" />
         <argument
             android:name="isTeacher"
             android:defaultValue="false"
@@ -55,12 +52,19 @@
         <action
             android:id="@+id/action_registerFragment_to_joinToClassFragment"
             app:destination="@id/joinToClassFragment" />
+        <action
+            android:id="@+id/action_registerFragment_to_createClassFragment"
+            app:destination="@id/createClassFragment" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
         android:name="com.example.aclass.auth.SignInFragment"
         android:label="fragment_sign_in"
-        tools:layout="@layout/fragment_sign_in"/>
+        tools:layout="@layout/fragment_sign_in">
+        <action
+            android:id="@+id/action_signInFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
+    </fragment>
     <fragment
         android:id="@+id/createClassFragment"
         android:name="com.example.aclass.home.classes.classes.CreateClassFragment"
@@ -71,4 +75,9 @@
         android:name="com.example.aclass.home.classes.classes.JoinToClassFragment"
         android:label="fragment_join_to_class"
         tools:layout="@layout/fragment_join_to_class" />
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.example.aclass.auth.ForgotPasswordFragment"
+        android:label="fragment_forgot_password"
+        tools:layout="@layout/fragment_forgot_password" />
 </navigation>

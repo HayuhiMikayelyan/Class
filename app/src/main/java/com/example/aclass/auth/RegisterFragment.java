@@ -1,24 +1,26 @@
 package com.example.aclass.auth;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.aclass.R;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
+import com.example.aclass.R;
 import com.example.aclass.databinding.FragmentRegisterBinding;
+import com.example.aclass.databinding.VerifyEmailDialogBinding;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -54,7 +56,8 @@ public class RegisterFragment extends Fragment {
             isTeacher = RegisterFragmentArgs.fromBundle(getArguments()).getIsTeacher();
         }
 
-        String emailPattern = "[a-zA-Z\\d._-]+@[a-z]+\\.+[a-z]+";
+        String emailPattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
+                "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
         if (name.isEmpty()) {
             binding.edtName.setError(getString(R.string.wrong_name));
@@ -76,30 +79,47 @@ public class RegisterFragment extends Fragment {
 
             boolean finalIsTeacher = isTeacher;
             auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
+
                 dismissProgress();
+
                 if (task.isSuccessful()) {
-                    DocumentReference documentReference = store.collection("users").document(Objects.requireNonNull(auth.getCurrentUser()).getUid());
+                    FirebaseUser fUser = auth.getCurrentUser();
+                    Objects.requireNonNull(fUser).sendEmailVerification().addOnSuccessListener(unused -> {
+                        Dialog dialog = new Dialog(requireContext());
+                        VerifyEmailDialogBinding binding1 = VerifyEmailDialogBinding.inflate(LayoutInflater.from(requireContext()));
 
-                    Map<String, Object> user = new HashMap<>();
-                    Map<String, Integer> test = new HashMap<>();
-                    user.put("name", name);
-                    user.put("email", email);
-                    user.put("isTeacher", finalIsTeacher);
-                    user.put("id", auth.getCurrentUser().getUid());
-                    user.put("test", test);
-                    user.put("icon", "https://firebasestorage.googleapis.com/v0/b/class-32ca7.appspot.com/o/images%2Fprofile%20picture.png?alt=media&token=d5f369bc-8d4e-44fa-9f88-11fab1dd0f85");
+                        binding1.btnOk.setOnClickListener(v -> {
+                            dialog.dismiss();
 
-                    documentReference.set(user).addOnSuccessListener(unused -> Toast.makeText(requireContext(), R.string.successful, Toast.LENGTH_LONG).show());
+                            DocumentReference documentReference = store.collection("users").document(Objects.requireNonNull(auth.getCurrentUser()).getUid());
 
-                    auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task1 -> {
-                        if (task.isSuccessful()) {
-                            if (finalIsTeacher) {
-                                Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_createClassFragment);
-                            } else {
-                                Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_joinToClassFragment);
-                            }
-                        }
+                            Map<String, Object> user = new HashMap<>();
+                            Map<String, Integer> test = new HashMap<>();
+                            user.put("name", name);
+                            user.put("email", email);
+                            user.put("isTeacher", finalIsTeacher);
+                            user.put("id", auth.getCurrentUser().getUid());
+                            user.put("test", test);
+                            user.put("icon", "https://firebasestorage.googleapis.com/v0/b/class-32ca7.appspot.com/o/images%2Fprofile%20picture.png?alt=media&token=d5f369bc-8d4e-44fa-9f88-11fab1dd0f85");
+
+                            documentReference.set(user).addOnSuccessListener(unused1 -> Toast.makeText(requireContext(), R.string.successful, Toast.LENGTH_LONG).show());
+
+                            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task1 -> {
+                                if (task.isSuccessful()) {
+                                    if (finalIsTeacher) {
+                                        Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_createClassFragment);
+                                    } else {
+                                        Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_joinToClassFragment);
+                                    }
+                                }
+                            });
+                        });
+
+                        dialog.setContentView(binding1.getRoot());
+                        dialog.show();
                     });
+
+
                 } else {
                     Toast.makeText(requireContext(), R.string.failure, Toast.LENGTH_LONG).show();
                 }

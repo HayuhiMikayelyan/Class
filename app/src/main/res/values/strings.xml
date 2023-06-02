@@ -65,7 +65,8 @@
     <string name="my_profile">My Profile</string>
     <string name="change_image">Change Image</string>
     <string name="save_changes">Save changes</string>
-    <string name="forget_password">Forget password?</string>
+    <string name="forget_password">Forgot password?</string>
+    <string name="forget_password1">Forgot password</string>
     <string name="lessons">Lessons</string>
     <string name="homeworks">Homeworks</string>
     <string name="log_out">Log out</string>
@@ -98,6 +99,12 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="delete">Delete</string>
+    <string name="check_your_email">Please click on the link that has been sent to your email to verify your account.</string>
+    <string name="verification">Verify your account</string>
+    <string name="ok">Ok</string>
+    <string name="reset_password_email">Enter your email to reset your password.</string>
+    <string name="reset">Reset</string>
+    <string name="check_email">Check your email!</string>
 
 
 </resources>

@@ -4,18 +4,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.viewpager2.widget.ViewPager2;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.example.aclass.R;
 import com.example.aclass.basic.MainActivity;
@@ -41,7 +40,7 @@ public class OnBoardingFragment extends Fragment {
         sharedPreferences = requireContext().getSharedPreferences("onBoarding", Context.MODE_PRIVATE);
         boolean isFirstTime = sharedPreferences.getBoolean("FirstTime", true);
         if (!isFirstTime) {
-            if (FirebaseAuth.getInstance().getCurrentUser()==null){
+            if (FirebaseAuth.getInstance().getCurrentUser() == null) {
                 Navigation.findNavController(container).navigate(R.id.action_onBoardingFragment_to_signInOrRegisterFragment);
             } else {
                 Intent intent = new Intent(getActivity(), MainActivity.class);

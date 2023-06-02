@@ -3,14 +3,14 @@ package com.example.aclass.auth;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.example.aclass.R;
 import com.example.aclass.basic.MainActivity;
@@ -36,6 +36,8 @@ public class SignInFragment extends Fragment {
 
         binding.btnSignIn.setOnClickListener(this::PerformSignIn);
 
+        binding.tvForgetPassword.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_signInFragment_to_forgotPasswordFragment));
+
         return binding.getRoot();
     }
 
@@ -43,7 +45,8 @@ public class SignInFragment extends Fragment {
         String email = Objects.requireNonNull(binding.edtEmail.getEditText()).getText().toString();
         String password = Objects.requireNonNull(binding.edtPassword.getEditText()).getText().toString();
 
-        String emailPattern = "[a-zA-Z\\d._-]+@[a-z]+\\.+[a-z]+";
+        String emailPattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
+                "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
         if (!email.matches(emailPattern)) {
             binding.edtEmail.setError(getString(R.string.wrong_email));
